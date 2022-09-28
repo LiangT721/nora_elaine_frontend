@@ -1,0 +1,49 @@
+.input{
+  
+  &__text{
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    line-height: 2rem;
+    border-radius: 2px;
+    border: none;
+    display: block;
+
+    transition: all .2s linear;
+    border-bottom: 2px solid transparent;
+
+    &::-webkit-input-placeholder {
+      color: $color-text-light-2;
+      font-family: $font-text;
+      text-transform: capitalize;
+      font-size: 1.3rem;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $color-nora-primary-light-2;
+    }
+
+  }
+
+  &__invalid{
+    border-bottom: 2px solid $color-alarm;
+  }
+
+  &__label {
+    display: block;
+    font-size: 1.3rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: $color-text-light-1;
+    transition: all .5s;
+  }
+
+  &__text:placeholder-shown + &__label{
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}

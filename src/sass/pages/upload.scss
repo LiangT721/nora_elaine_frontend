@@ -1,0 +1,60 @@
+.upload {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 10rem;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba($color-nora-primary-light-3, 1),
+    rgba($color-elaine-primary-light-1, 1)
+  );
+
+  &__form {
+    width: 80rem;
+    // min-height: 100rem;
+    margin: 0 auto;
+    padding: 3rem 5rem;
+    background-color: $color-milk-white;
+
+    box-shadow: $shadow-card;
+    border-radius: 3px;
+
+    display: grid;
+    align-content: start;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+  }
+
+  &__heading {
+    font-size: 3rem;
+    text-transform: uppercase;
+    background-image: linear-gradient(to right bottom, $color-nora-primary-light-1,$color-nora-primary-light-2);
+    -webkit-background-clip: text;
+    color:transparent;
+    font-weight: 600;
+    grid-column: 1 / -1;
+    justify-self: center;
+    
+  }
+
+  &__creator {
+    grid-column: 1 / -1;
+  }
+
+  
+
+  &__btn,
+  &__image {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  &__bottom__btns{
+    width: 80rem;
+    margin: 0 auto;
+    text-align: end;
+    margin-top: 3rem;
+    padding-right: 1rem;
+  }
+}

@@ -1,0 +1,15 @@
+.image__upload {
+  &__container {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  &__preview {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+}

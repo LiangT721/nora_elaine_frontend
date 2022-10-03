@@ -51,7 +51,7 @@ const UserInfo = () => {
           { "Content-Type": "application/json" }
         );
 
-        console.log(res.loginInfo);
+        // console.log(res.loginInfo);
         const now = new Date();
         const time = now.getTime();
         const expireTime = time + 60 * 60 * 1000;
@@ -63,7 +63,7 @@ const UserInfo = () => {
             userInfo: res.loginInfo
           }
         });
-        console.log(authState);
+        // console.log(authState);
         navigate("/upload");
       } catch (error) {
         console.log(error);

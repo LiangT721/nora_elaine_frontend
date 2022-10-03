@@ -21,6 +21,7 @@ function App() {
   const checkLogin = useCallback(
     async (token) => {
       try {
+        console.log("check")
         const res = await sendRequest(
           `${URL}api/users/auth`,
           "POST",

@@ -30,13 +30,12 @@ const Input = (props) => {
   const { id, onInput, alarm } = props;
   const { value, isValid } = inputState;
 
-  useEffect(()=>{
-    alarm && touchHandler()
+  useEffect(() => {
+    alarm && touchHandler();
     onInput(id, value, isValid);
-  },[id, value, isValid, onInput, alarm])
+  }, [id, value, isValid, onInput, alarm]);
 
   const changeHandler = (e) => {
-    console.log('change')
     dispatch({
       type: "CHANGE",
       val: e.target.value,
@@ -49,8 +48,46 @@ const Input = (props) => {
     });
   };
 
-  return (
-    <div className={`input ${props.className}`}>
+  const elements = () => {
+    if (props.textarea) {
+      return (
+        <textarea
+          className={`input__text ${
+            !inputState.isValid && inputState.isTouched && "input__invalid"
+          }`}
+          id={props.id}
+          rows={props.rows || 3}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+          placeholder={props.placeholder}
+        />
+      );
+    }
+    if (props.select) {
+      return (
+        <select
+          className={`input__select ${
+            !inputState.isValid && inputState.isTouched && "input__invalid"
+          }`}
+          id={props.id}
+          placeholder={props.placeholder}
+          onChange={changeHandler}
+          onBlur={touchHandler}
+          value={inputState.value}
+        >
+          {props.select.map((el, index) => {
+            const text = el.split('|')
+            return (
+              <option key={index} value={el} className="input__select__option">
+                {text[0]}
+              </option>
+            );
+          })}
+        </select>
+      );
+    }
+    return (
       <input
         className={`input__text ${
           !inputState.isValid && inputState.isTouched && "input__invalid"
@@ -61,6 +98,13 @@ const Input = (props) => {
         onBlur={touchHandler}
         value={inputState.value}
       ></input>
+    );
+  };
+
+
+  return (
+    <div className={`input ${props.className}`}>
+      {elements()}
       <label htmlFor="props.id" className="input__label">
         {props.label}
       </label>

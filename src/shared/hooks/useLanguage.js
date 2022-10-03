@@ -1,22 +1,21 @@
 import React, { useReducer } from "react";
 
-const languageContext = React.createContext() 
+const languageContext = React.createContext();
 
 const languageReducer = (state, action) => {
-  switch(action.type){
+  switch (action.type) {
     case "LAN_TOGGLE":
-      const preLan = state.lan
+      const preLan = state.lan;
       return {
         ...state,
-        lan : !preLan
-      }
-      default:
-        return state;
-  } 
+        lan: !preLan
+      };
+    default:
+      return state;
+  }
 };
 
-const LanguageProvider = props => {
-
+const LanguageProvider = (props) => {
   const [lanState, dispatch] = useReducer(languageReducer, {
     lan: true
   });
@@ -28,10 +27,10 @@ const LanguageProvider = props => {
   // }
 
   return (
-    <languageContext.Provider value={{lanState, dispatch}}>
+    <languageContext.Provider value={{ lanState, dispatch }}>
       {props.children}
     </languageContext.Provider>
-  )
-}
+  );
+};
 
 export { languageContext, LanguageProvider };

@@ -1,11 +1,15 @@
 @import "./shared/variable";
 @import "./shared/untilites";
+@import "./shared/layout";
 
+@import "./components/popUp";
 @import "./components/text";
 @import "./components/imageUpload";
+@import "./components/signUp";
 @import "./components/input";
 @import "./components/button";
 @import "./components/language-toggle";
 
-
-@import './pages/upload';
+@import "./pages/home";
+@import "./pages/upload";
+@import "./pages/user-info";

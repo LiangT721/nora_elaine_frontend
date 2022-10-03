@@ -26,6 +26,8 @@
   text-shadow: $shadow-text-dark;
   display: inline-block;
   transition: all .2s linear;
+  color: $color-milk-white;
+  cursor: pointer;
   &:hover {
     transform: translateY(-1px);
     text-shadow: $shadow-text-light;

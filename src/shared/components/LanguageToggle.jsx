@@ -1,14 +1,13 @@
 import React, { useContext} from "react";
 import { languageContext } from "../hooks/useLanguage";
 
-const LanguageToggle = () => {
+const LanguageToggle = (props) => {
   const { lanState, dispatch } = useContext(languageContext);
   return(
-    <div className="language-toggle">
-      <p>{ lanState.lan? "english" : "chinese"}</p>
-      <button className="button" onClick={()=>dispatch({
+    <div className={`language-toggle ${props.className}`}>
+      <button className="button language-toggle__btn" onClick={()=>dispatch({
         type:"LAN_TOGGLE"
-      })} >english</button>
+      })} >{ lanState.lan? "English" : "中文"} &#10095; { lanState.lan? "中文" : "English"}</button>
     </div>
   )
 }

@@ -7,7 +7,10 @@
 
   &__preview {
     width: 100%;
-
+    margin-bottom: 1rem;
+    &__icon {
+      width: 50%;
+    }
     img {
       width: 100%;
     }

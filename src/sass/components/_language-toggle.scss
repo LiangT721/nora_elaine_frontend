@@ -1,6 +1,7 @@
 .language-toggle{
-  width: 80rem;
-  margin: 0 auto;
-  text-align: end;
-  transform: translateY(-5rem);  
+  
+
+  &__btn{
+    font-size: 1.4rem;
+  }
 }

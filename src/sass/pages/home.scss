@@ -1,0 +1,106 @@
+.home {
+  display: grid;
+  width: 100%;
+  font-size: 2rem;
+  grid-template-rows: 7rem 5rem 1fr;
+  row-gap: 2rem;
+  justify-items: center;
+  align-items: start;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    rgba($color-nora-primary-light-3, 1),
+    rgba($color-elaine-primary-light-1, 1)
+  );
+
+  &__heading {
+    padding: 3rem 0;
+    font-size: 3rem;
+    font-weight: 600;
+    color: $color-text-light-2;
+  }
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    align-items: start;
+
+    @media only screen and ( max-width: $bp-sm) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__nora__gallery,
+  &__elaine__gallery {
+    // background-color: $color-nora-primary-light-1;
+    width: 100%;
+    min-height: calc(100vh - 14rem);
+    row-gap: 2rem;
+    display: grid;
+    justify-items: center;
+    padding: 3rem;
+
+    &__creator {
+      display: flex;
+      align-items:center;
+      margin-top: 2rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-family: $font-display;
+      color: $color-text-light-2;
+      text-shadow: $shadow-text-dark;
+      &>*{
+        font-size: 3rem;
+      }
+    }
+
+    &__icon{
+      margin-left: 2rem;
+      width: 6rem;
+      height: 6rem;
+      &>img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__item{
+      padding: 2rem;
+      background-color: $color-text-light-2;
+      border-radius: 5px;
+      box-shadow: $shadow-card;
+      width: 40rem;
+      height: 60rem;
+      @media only screen and ( max-width: $bp-sm) {
+        width: 60vw;
+        height: 40rem;
+      }
+    }
+
+    &__image{
+      width: 100%;
+      height: 90%;
+      overflow: hidden;
+      & > img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__info {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      color: $color-nora-primary;
+    }
+  }
+}
+
+.page-links {
+  margin-top: 2rem;
+  height: 4rem;
+  & > *:first-child {
+    margin-right: 2rem;
+  }
+}

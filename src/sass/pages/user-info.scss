@@ -1,0 +1,53 @@
+.user-info {
+  background-image: linear-gradient(
+    to bottom right,
+    rgba($color-nora-primary-light-3, 1),
+    rgba($color-nora-primary-light-2, 1)
+  );
+  min-height: 100vh;
+  padding-top: 10rem;
+  display: grid;
+  justify-items: center;
+
+  &__container {
+    position: fixed;
+    top: 0;
+    width: 60rem;
+    margin-top: 10rem;
+    @media only screen and ( max-width: $bp-sm) {
+      width: 80%;
+    }
+  }
+  &__language-toggle {
+    text-align: end;
+    margin-bottom: 2rem;
+  }
+}
+
+.login{
+
+  &__form{
+  }
+
+  &__username,
+  &__password{
+    grid-column: 1 / -1;
+  }
+
+  &__btn{
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+.sign-up__btn{
+  margin-top: 2rem;
+  display:inline-block;
+}
+
+.bottom__btns{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

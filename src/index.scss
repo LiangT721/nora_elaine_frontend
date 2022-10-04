@@ -13,6 +13,10 @@ html {
   font-size: 62.5%; //10px
   scroll-behavior: smooth;
 
+  @media only screen and ( max-width: $bp-sm) {
+    font-size: 50%;
+  }
+
 }
 
 body {

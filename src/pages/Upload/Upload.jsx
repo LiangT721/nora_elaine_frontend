@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import { URL } from "../../variable";
+import { URL, category } from "../../variable";
 import { useResizer } from "../../shared/hooks/useResizer";
 import { useForm } from "../../shared/hooks/useForm";
 import { useHttpClient } from "../../shared/hooks/http-hook";
@@ -61,14 +61,6 @@ const Upload = () => {
     },
     false
   );
-
-  const category = [
-    "anime|漫画",
-    "paintings|宾夕画",
-    "sketch|素描",
-    "watercolor|水彩",
-    "pattern|图案"
-  ];
 
   useEffect(() => {
     if (authState.isLogin) {

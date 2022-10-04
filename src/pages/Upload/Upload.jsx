@@ -154,7 +154,7 @@ const Upload = () => {
           <Input
             label="name"
             id="name"
-            className="name"
+            className="upload__name"
             placeholder="name"
             onInput={inputHandler}
             validators={[VALIDATOR_REQUIRE()]}

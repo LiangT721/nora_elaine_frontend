@@ -14,6 +14,37 @@
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
 
+  @media only screen and (max-width: $bp-lg) {
+    height: 100vh;
+    background-image: linear-gradient(
+      155deg,
+      $color-elaine-primary 0,
+      $color-elaine-primary 50%,
+      $color-nora-primary 50%,
+      $color-nora-primary 100%
+    );
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media only screen and (max-width: $bp-lg) {
+    background-image: linear-gradient(
+      155deg,
+      $color-elaine-primary 0,
+      $color-elaine-primary 50%,
+      $color-nora-primary 50%,
+      $color-nora-primary 100%
+    );
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media only screen and (max-width: $bp-sm) {
+    background-image: linear-gradient(
+      165deg,
+      $color-elaine-primary 0,
+      $color-elaine-primary 50%,
+      $color-nora-primary 50%,
+      $color-nora-primary 100%
+    );
+    height: 190vh;
+  }
   &__bg {
     position: absolute;
     border: 1px solid black;
@@ -24,6 +55,9 @@
     max-width: $landing-max-width;
     height: 100%;
     z-index: 0;
+    @media only screen and (max-width: $bp-sm) {
+      height: 190vh;
+    }
   }
 
   &__logo {
@@ -32,6 +66,20 @@
     top: 48%;
     left: 50%;
     transform: translate(-50%, -50%) rotateZ(-3deg);
+
+    @media only screen and (max-width: $bp-xxxl) {
+      width: 23%;
+    }
+
+    @media only screen and (max-width: $bp-lg) {
+      width: 40%;
+    }
+    @media only screen and (max-width: $bp-md) {
+      width: 30%;
+    }
+    @media only screen and (max-width: $bp-sm) {
+      width: 60%;
+    }
   }
 
   &__elaine,
@@ -42,6 +90,9 @@
     position: relative;
     overflow: hidden;
     z-index: 10;
+    @media only screen and (max-width: $bp-sm) {
+      height: 90vh;
+    }
   }
   &__elaine {
     justify-self: end;
@@ -55,9 +106,8 @@
       height: 32rem;
     }
 
-
     &__intro {
-      width: 35rem;
+      width: 40%;
       position: absolute;
       top: 7%;
       left: 15%;
@@ -78,10 +128,76 @@
       color: $color-milk-white;
       text-shadow: $shadow-text-dark;
     }
+    @media only screen and (max-width: $bp-xxxl) {
+      &__intro {
+        top: 10%;
+      }
+      &__text {
+        font-size: 1.6rem;
+      }
+      &__slider {
+        bottom: 10%;
+      }
+    }
+    @media only screen and (max-width: $bp-lg) {
+    }
+    @media only screen and (max-width: $bp-xxl) {
+      &__slider {
+        width: 45rem;
+        height: 28rem;
+        bottom: 12%;
+        left: 7%;
+      }
+      &__intro {
+        width: 47%;
+      }
+      &__title {
+        font-size: 4rem;
+      }
+    }
+    @media only screen and (max-width: $bp-xl) {
+      &__slider {
+        width: 40rem;
+        height: 25rem;
+      }
+    }
+    @media only screen and (max-width: $bp-lg) {
+      &__intro {
+        width: 40%;
+        left: 10%;
+        top: 20%;
+      }
+      &__slider {
+        top: 15%;
+        left: 50%;
+        width: 40rem;
+        height: 25rem;
+      }
+    }
+    @media only screen and (max-width: $bp-sm) {
+      &__intro {
+        width: 70%;
+        left: 15%;
+        top: 13%;
+      }
+      &__title{
+        margin-bottom: 6rem ;
+        transform: rotateZ(-3deg);
+      }
+      &__text{
+        transform: rotateZ(0);
+      }
+      &__slider {
+        top: 55%;
+        left: 2.5%;
+        width: 95%;
+        height: 25rem;
+        transform: rotateZ(0);
+      }
+    }
   }
 
   &__nora {
-
     &__slider {
       position: absolute;
       top: 7%;
@@ -92,18 +208,18 @@
       z-index: 5;
     }
     &__intro {
-      width: 60rem;
+      width: 75%;
       position: absolute;
       bottom: 7%;
-      right: 15%;
+      right: 8%;
       display: flex;
     }
     &__title {
       font-family: $font-display;
-      font-size: 5rem;
+      font-size: 6rem;
       text-shadow: $shadow-text-light;
-      transform: translate(10rem, 15rem) rotateZ(-2deg);
-      margin-bottom: 2rem;
+      transform: translate(8rem, 9rem) rotateZ(-2deg);
+      // margin-bottom: 2rem;
     }
     &__text {
       width: 60%;
@@ -113,6 +229,88 @@
       text-shadow: $shadow-text-dark;
       transform: rotateZ(-5deg);
     }
+    @media only screen and (max-width: $bp-xxxl) {
+      &__intro {
+        width: 70%;
+        right: 10%;
+      }
+      &__title {
+        font-size: 5rem;
+      }
+      &__text {
+        font-size: 1.6rem;
+      }
+      &__slider {
+        height: 30rem;
+      }
+    }
+    @media only screen and (max-width: $bp-xxl) {
+      &__slider {
+        height: 25rem;
+        width: 50rem;
+        top: 10%;
+      }
+      &__title {
+        transform: translate(5rem, 12rem) rotateZ(-2deg);
+      }
+    }
+    @media only screen and (max-width: $bp-xl) {
+      &__intro {
+        width: 75%;
+      }
+      &__title {
+        transform: translate(3rem, 16rem) rotateZ(-2deg);
+      }
+      &__slider {
+        width: 40rem;
+        height: 23rem;
+      }
+    }
+    @media only screen and (max-width: $bp-lg) {
+      &__intro {
+        width: 40%;
+        left: 55%;
+        bottom: 15%;
+        display: grid;
+        row-gap: 4rem;
+      }
+      &__title {
+        transform: translate(0, 0) rotateZ(-2deg);
+        grid-row: 1 / 2;
+      }
+      &__text {
+        width: 100%;
+        transform: rotateZ(2deg);
+      }
+      &__slider {
+        top: 40%;
+        left: 5%;
+        width: 45rem;
+        height: 25rem;
+        transform: rotateZ(2deg);
+      }
+    }
+    @media only screen and (max-width: $bp-sm) {
+      &__intro {
+        width: 70%;
+        left: 15%;
+        bottom: 10%;
+        display: grid;
+        row-gap: 8rem;
+        transform: rotateZ(0);
+      }
+
+      &__text{
+        transform: rotateZ(0);
+      }
+      &__slider {
+        top: 15%;
+        left: 2.5%;
+        width: 95%;
+        height: 25rem;
+        transform: rotateZ(0);
+      }
+    }
   }
 }
 
@@ -120,7 +318,9 @@
   width: 6rem;
   fill: $color-milk-white;
   position: absolute;
-
+  @media only screen and (max-width: $bp-xl) {
+    width: 5rem;
+  }
   &-photo {
     width: 8rem;
     fill: $color-elaine-primary-light-1;
@@ -129,8 +329,8 @@
     filter: drop-shadow($shadow-text-dark);
     // transform: rotateZ(-15deg);
     animation: shake 1.5s infinite;
-    cursor: pointer; 
-    z-index: 100; 
+    cursor: pointer;
+    z-index: 100;
   }
   &-bird {
     width: 5rem;
@@ -154,7 +354,7 @@
   &-pencil {
     width: 4rem;
     fill: $color-elaine-primary-light-1;
-    bottom: 28%;
+    top: 48%;
     left: 43%;
     transform: rotateZ(180deg);
   }
@@ -175,7 +375,7 @@
     width: 8rem;
     fill: $color-nora-primary-light-2;
     top: 40%;
-    right: 1%;
+    right: 3%;
     transform: rotateZ(10deg);
   }
   &-planet {
@@ -200,14 +400,137 @@
     right: 20%;
     transform: rotateZ(-10deg);
   }
-  &-nora{
+  &-nora {
     width: 15rem;
-    right: 7%;
+    right: 6%;
     bottom: 18%;
   }
-  &-elaine{
+  &-elaine {
     width: 15rem;
-    left: 28%;
+    left: 32%;
     top: 10%;
+  }
+  @media only screen and (max-width: $bp-xl) {
+    &-nora,
+    &-elaine {
+      width: 12rem;
+    }
+    &-elaine {
+      top: 15%;
+    }
+    &-planet,
+    &-film,
+    &-photo {
+      width: 7rem;
+    }
+  }
+  @media only screen and (max-width: $bp-lg) {
+    &-photo {
+      left: 10%;
+      top: 55%;
+    }
+    &-elaine {
+      top: 35%;
+      left: 10%;
+    }
+    &-nora {
+      width: 15rem;
+      bottom: 25%;
+      right: 10%;
+    }
+    &-bird {
+      top: 35%;
+      left: 42%;
+    }
+    &-music {
+      top: 1%;
+      left: 85%;
+    }
+    &-lollipop {
+      top: 6%;
+      width: 6rem;
+      left: 30%;
+    }
+    &-pencil {
+      top: 30%;
+      left: 30%;
+    }
+    &-headphone {
+      top: 40%;
+      left: 90%;
+    }
+    &-gift {
+      top: 85%;
+      right: 2%;
+    }
+    &-cassette {
+      width: 4rem;
+      top: 55%;
+      right: 45%;
+    }
+    &-planet {
+      top: 38%;
+      right: 23%;
+    }
+    &-pen {
+      top: 47%;
+      left: 68%;
+    }
+    &-film {
+      top: 85%;
+      right: 83%;
+    }
+  }
+  @media only screen and (max-width: $bp-lg) {
+    &-photo {
+      width: 4rem;
+      left: 10%;
+      top: 42%;
+    }
+    &-elaine {
+      top: 3%;
+      left: 50%;
+    }
+    &-nora {
+      width: 15rem;
+      bottom: 20%;
+      right: 10%;
+    }
+    &-bird {
+      top: 20%;
+      left: 42%;
+    }
+    &-lollipop {
+      top: 6%;
+      width: 4rem;
+      left: 30%;
+    }
+    &-pencil {
+      top: 42%;
+      left: 15%;
+    }
+    &-headphone {
+      width: 4rem;
+      top: 50%;
+      left: 80%;
+    }
+    &-gift {
+      width: 6rem;
+      top: 90%;
+      right: 15%;
+    }
+    &-cassette {
+      top: 66%;
+      right: 75%;
+    }
+    &-planet {
+      width: 5rem;
+      top: 40%;
+      right: 15%;
+    }
+    &-film {
+      top: 88%;
+      right: 83%;
+    }
   }
 }

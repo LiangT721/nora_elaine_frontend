@@ -1,0 +1,213 @@
+.landing-gallery {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+    to right,
+    $color-elaine-primary 0,
+    $color-elaine-primary 50%,
+    $color-nora-primary 50%,
+    $color-nora-primary 100%
+  );
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+
+  &__bg {
+    position: absolute;
+    border: 1px solid black;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: $landing-max-width;
+    height: 100%;
+    z-index: 0;
+  }
+
+  &__logo {
+    width: 25%;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateZ(-3deg);
+  }
+
+  &__elaine,
+  &__nora {
+    height: 100%;
+    width: 100%;
+    max-width: $landing-max-width / 2;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+  }
+  &__elaine {
+    justify-self: end;
+
+    &__slider {
+      position: absolute;
+      bottom: 5%;
+      left: 5%;
+      transform: rotateZ(-5deg);
+      width: 60rem;
+      height: 40rem;
+    }
+
+
+    &__intro {
+      width: 35rem;
+      position: absolute;
+      top: 7%;
+      left: 15%;
+    }
+    &__title {
+      font-family: $font-display;
+      text-shadow: $shadow-text-light;
+
+      font-size: 5rem;
+      transform: rotateZ(2deg);
+      margin-bottom: 2rem;
+    }
+    &__text {
+      width: 100%;
+      font-size: 1.8rem;
+      font-weight: 500;
+      transform: translateX(-2rem) rotateZ(-2deg);
+      color: $color-milk-white;
+      text-shadow: $shadow-text-dark;
+    }
+  }
+
+  &__nora {
+
+    &__slider {
+      position: absolute;
+      top: 7%;
+      right: 10%;
+      transform: rotateZ(8deg);
+      width: 55rem;
+      height: 38rem;
+      z-index: 5;
+    }
+    &__intro {
+      width: 60rem;
+      position: absolute;
+      bottom: 7%;
+      right: 15%;
+      display: flex;
+    }
+    &__title {
+      font-family: $font-display;
+      font-size: 5rem;
+      text-shadow: $shadow-text-light;
+      transform: translate(10rem, 15rem) rotateZ(-2deg);
+      margin-bottom: 2rem;
+    }
+    &__text {
+      width: 60%;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: $color-elaine-primary-light-1;
+      text-shadow: $shadow-text-dark;
+      transform: rotateZ(-5deg);
+    }
+  }
+}
+
+.home__svgs {
+  width: 6rem;
+  fill: $color-milk-white;
+  position: absolute;
+
+  &-photo {
+    width: 8rem;
+    fill: $color-elaine-primary-light-1;
+    top: 10%;
+    left: 48%;
+    filter: drop-shadow($shadow-text-dark);
+    // transform: rotateZ(-15deg);
+    animation: shake 1.5s infinite;
+    cursor: pointer; 
+    z-index: 100; 
+  }
+  &-bird {
+    width: 5rem;
+    fill: $color-elaine-primary-dark;
+    bottom: 20%;
+    left: 42%;
+    transform: rotateZ(-5deg);
+  }
+  &-music {
+    fill: $color-elaine-primary-light-1;
+    bottom: 5%;
+    left: 35%;
+    transform: rotateZ(5deg);
+  }
+  &-lollipop {
+    width: 4rem;
+    fill: $color-elaine-primary-light-1;
+    bottom: 40%;
+    left: 5%;
+  }
+  &-pencil {
+    width: 4rem;
+    fill: $color-elaine-primary-light-1;
+    bottom: 28%;
+    left: 43%;
+    transform: rotateZ(180deg);
+  }
+  &-headphone {
+    width: 7rem;
+    fill: $color-milk-white;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%) rotateZ(20deg);
+  }
+  &-gift {
+    fill: $color-nora-primary-light-2;
+    top: 0;
+    right: 2%;
+    transform: rotateZ(-10deg);
+  }
+  &-cassette {
+    width: 8rem;
+    fill: $color-nora-primary-light-2;
+    top: 40%;
+    right: 1%;
+    transform: rotateZ(10deg);
+  }
+  &-planet {
+    width: 8rem;
+    fill: $color-nora-primary-light-3;
+    top: 38%;
+    right: 32%;
+    transform: rotateZ(-10deg);
+    z-index: 10;
+  }
+  &-pen {
+    width: 4rem;
+    fill: $color-nora-primary-light-3;
+    top: 33%;
+    left: 51%;
+    transform: rotateZ(-10deg);
+  }
+  &-film {
+    width: 8rem;
+    fill: $color-nora-primary-light-1;
+    top: 55%;
+    right: 20%;
+    transform: rotateZ(-10deg);
+  }
+  &-nora{
+    width: 15rem;
+    right: 7%;
+    bottom: 18%;
+  }
+  &-elaine{
+    width: 15rem;
+    left: 28%;
+    top: 10%;
+  }
+}

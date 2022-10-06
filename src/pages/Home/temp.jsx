@@ -33,10 +33,13 @@ const Temp = () => {
     fetchPaintingsList();
   }, [fetchPaintingsList]);
   return (
-    <React.Fragment>
-      <p className="home__heading">Home page</p>
+    <div className="temp">
+      <p className="temp__heading">Painting</p>
       <LanguageToggle />
       <div className="page-links">
+        <Link to="/" className="button">
+          home
+        </Link>
         <Link to="/upload" className="button">
           upload
         </Link>
@@ -44,12 +47,12 @@ const Temp = () => {
           user information
         </Link>
       </div>
-      <div className="home__gallery">
-        <div className="home__nora__gallery">
-          <div className="home__nora__gallery__creator">
+      <div className="temp__gallery">
+        <div className="temp__nora__gallery">
+          <div className="temp__nora__gallery__creator">
             <Text>{["Nora", "汤一诺"]}</Text>
             {users.nora && (
-              <div className="home__nora__gallery__icon">
+              <div className="temp__nora__gallery__icon">
                 <img src={`${URL}api/${users.nora.icon}`} alt="" />
               </div>
             )}
@@ -57,12 +60,12 @@ const Temp = () => {
           {noralist &&
             noralist.length > 0 &&
             noralist.map((el) => (
-              <div className="home__nora__gallery__item" key={el._id}>
-                <div className="home__nora__gallery__image">
+              <div className="temp__nora__gallery__item" key={el._id}>
+                <div className="temp__nora__gallery__image">
                   <img src={`${URL}api/${el.imagePreview}`} alt="" />
                 </div>
-                <Text className="home__nora__gallery__name">{el.name}</Text>
-                <div className="home__nora__gallery__info">
+                <Text className="temp__nora__gallery__name">{el.name}</Text>
+                <div className="temp__nora__gallery__info">
                   <Text>{el.category}</Text>
                   <Text>{el.content}</Text>
                   <Text>{el.created_date}</Text>
@@ -70,11 +73,11 @@ const Temp = () => {
               </div>
             ))}
         </div>
-        <div className="home__elaine__gallery">
-          <div className="home__elaine__gallery__creator">
+        <div className="temp__elaine__gallery">
+          <div className="temp__elaine__gallery__creator">
             <Text>{["Elaine", "汤一冉"]}</Text>
             {users.elaine && (
-              <div className="home__elaine__gallery__icon">
+              <div className="temp__elaine__gallery__icon">
                 <img src={`${URL}api/${users.elaine.icon}`} alt="" />
               </div>
             )}
@@ -82,12 +85,12 @@ const Temp = () => {
           {elainelist &&
             elainelist.length > 0 &&
             elainelist.map((el) => (
-              <div className="home__elaine__gallery__item" key={el._id}>
-                <div className="home__elaine__gallery__image">
+              <div className="temp__elaine__gallery__item" key={el._id}>
+                <div className="temp__elaine__gallery__image">
                   <img src={`${URL}api/${el.imagePreview}`} alt="" />
                 </div>
-                <Text className="home__nora__gallery__name">{el.name}</Text>
-                <div className="home__elaine__gallery__info">
+                <Text className="temp__nora__gallery__name">{el.name}</Text>
+                <div className="temp__elaine__gallery__info">
                   <Text>{el.category}</Text>
                   <Text>{el.content}</Text>
                   <Text>{el.created_date}</Text>
@@ -96,7 +99,7 @@ const Temp = () => {
             ))}
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

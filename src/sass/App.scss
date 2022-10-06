@@ -1,15 +1,20 @@
-@import "./shared/variable";
-@import "./shared/untilites";
-@import "./shared/layout";
+@import "./base/variable";
+@import "./base/untilites";
+@import "./base/layout";
 
-@import "./components/popUp";
-@import "./components/text";
-@import "./components/imageUpload";
+@import "./shared/popUp";
+@import "./shared/text";
+@import "./shared/input";
+@import "./shared/button";
+@import "./shared/language-toggle";
+@import "./shared/imageUpload";
+@import "./shared/slider.scss";
+
 @import "./components/signUp";
-@import "./components/input";
-@import "./components/button";
-@import "./components/language-toggle";
+@import "./components/langing-gallery.scss";
+
 
 @import "./pages/home";
 @import "./pages/upload";
 @import "./pages/user-info";
+@import "./pages/temp";

@@ -1,11 +1,11 @@
 import React from "react";
+import LandingGallery from "../../components/LandingGallery";
 
-import Temp from "./temp";
 
 const Home = () => {
   return (
     <div className="home">
-      <Temp />
+      <LandingGallery />
     </div>
   );
 };

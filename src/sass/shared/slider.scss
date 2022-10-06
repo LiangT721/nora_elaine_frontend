@@ -1,0 +1,149 @@
+.slider__div {
+  // background-color: rgba(126, 229, 255, 0.772);
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  position: relative;
+}
+
+.slider__container {
+  width: 70%;
+  margin: 0 auto;
+  overflow: hidden;
+  height: inherit;
+  // background-color: #fff;
+  position: relative;
+}
+
+.slider__item {
+  position: absolute;
+  width: 100%;
+  height: inherit;
+  display: none;
+  z-index: 0;
+  transition: all 0.5s linear;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  align-items: center;
+  // padding: 1rem;
+  
+  & > img {
+ 
+    // border: 1.5rem solid $color-milk-white;
+    // border-radius: 1rem;
+    width: inherit;
+    height: inherit;
+    object-fit:contain;
+  }
+
+  .slider__img {
+
+    &__elaine{
+      // background-color: $color-elaine-primary-light-1;
+      border-color: $color-elaine-primary-light-1;
+    }
+    &__nora{
+      // background-color: $color-nora-primary-light-1;
+      border-color: $color-nora-primary-light-1;
+    }
+  }
+}
+
+.curSlider,
+.nextSlider,
+.preSlider {
+  display: grid;
+  opacity: 1;
+  visibility: visible;
+}
+.preSlider {
+  z-index: 3;
+  transform: translateX(-100%);
+}
+.nextSlider {
+  z-index: 5;
+  transform: translateX(100%);
+}
+.curSlider {
+  z-index: 5;
+  transform: translateX(0);
+}
+
+.slider__btns {
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  &__pre,
+  &__next {
+    position: absolute;
+    fill: $color-milk-white;
+    width: 5rem;
+    height: 5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    filter: drop-shadow($shadow-text-dark);
+    transition: all .2s linear;
+
+    &:hover{
+      margin-top: -3px;
+    }
+
+    &:active {
+      margin-top: 2px;
+    }
+  }
+
+  &__elaine {
+    fill: $color-elaine-primary-light-1;
+  }
+  &__nora{
+    fill: $color-nora-primary-light-1;
+  }
+  &__next {
+    right: 2rem;
+    animation: shake .8s infinite .5s;
+  }
+  &__pre {
+    left: 2rem;
+     animation: shake .8s infinite;
+  }
+
+  &__selects {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    z-index: 20;
+  }
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: $color-milk-white;
+  transform: translateY(150%);
+  border-radius: 50%;
+  display: inline-block;
+}
+// .enter {
+//   animation-name: fade;
+//   animation-duration: 1.5s;
+// }
+
+// @keyframes fade {
+//   from {
+//     opacity: 0.4;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+

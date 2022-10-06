@@ -47,7 +47,7 @@
   }
   &__bg {
     position: absolute;
-    border: 1px solid black;
+    // border: 1px solid black;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -354,7 +354,7 @@
   &-pencil {
     width: 4rem;
     fill: $color-elaine-primary-light-1;
-    top: 48%;
+    top: 55%;
     left: 43%;
     transform: rotateZ(180deg);
   }

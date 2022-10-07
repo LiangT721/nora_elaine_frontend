@@ -139,8 +139,6 @@
         bottom: 10%;
       }
     }
-    @media only screen and (max-width: $bp-lg) {
-    }
     @media only screen and (max-width: $bp-xxl) {
       &__slider {
         width: 45rem;
@@ -161,6 +159,7 @@
         height: 25rem;
       }
     }
+
     @media only screen and (max-width: $bp-lg) {
       &__intro {
         width: 40%;
@@ -177,21 +176,22 @@
     @media only screen and (max-width: $bp-sm) {
       &__intro {
         width: 70%;
+        height: 40%;
         left: 15%;
-        top: 13%;
+        top: 10%;
       }
-      &__title{
-        margin-bottom: 6rem ;
+      &__title {
+        margin-bottom: 6rem;
         transform: rotateZ(-3deg);
       }
-      &__text{
+      &__text {
         transform: rotateZ(0);
       }
       &__slider {
         top: 55%;
         left: 2.5%;
         width: 95%;
-        height: 25rem;
+        height: 28vh;
         transform: rotateZ(0);
       }
     }
@@ -293,21 +293,23 @@
     @media only screen and (max-width: $bp-sm) {
       &__intro {
         width: 70%;
+        height: 35%;
         left: 15%;
         bottom: 10%;
         display: grid;
-        row-gap: 8rem;
+        row-gap: 0;
         transform: rotateZ(0);
+        grid-template-rows: 1fr min-content;
       }
 
-      &__text{
+      &__text {
         transform: rotateZ(0);
       }
       &__slider {
         top: 15%;
         left: 2.5%;
         width: 95%;
-        height: 25rem;
+        height: 30vh;
         transform: rotateZ(0);
       }
     }
@@ -481,56 +483,73 @@
       right: 83%;
     }
   }
-  @media only screen and (max-width: $bp-lg) {
-    &-photo {
-      width: 4rem;
+  @media only screen and (max-width: $bp-sm) {
+    // width: auto;
+    height: 4rem;
+    &-snowflake {
+      top: 2%;
       left: 10%;
-      top: 42%;
+    }
+    &-photo {
+      width: 5rem;
+      left: 8%;
+      top: 45%;
     }
     &-elaine {
+      width: auto;
+      height: 7%;
       top: 3%;
       left: 50%;
     }
     &-nora {
-      width: 15rem;
-      bottom: 20%;
+      width: auto;
+      height: 8%;
+      bottom: 18%;
       right: 10%;
     }
     &-bird {
-      top: 20%;
+      top: 22%;
       left: 42%;
     }
     &-lollipop {
-      top: 6%;
+      top: 8%;
       width: 4rem;
       left: 30%;
     }
     &-pencil {
-      top: 42%;
-      left: 15%;
+      display: none;
+      top: 51%;
+      left: 35%;
+    }
+
+    &-pen {
+      display: none;
+
+      top: 45%;
+      left: 40%;
     }
     &-headphone {
-      width: 4rem;
-      top: 50%;
-      left: 80%;
+      height: 5rem;
+      top: 45%;
+      left: 90%;
     }
     &-gift {
-      width: 6rem;
-      top: 90%;
+      height: 6rem;
+      top: 95%;
       right: 15%;
     }
     &-cassette {
-      top: 66%;
+      top: 70%;
       right: 75%;
     }
     &-planet {
-      width: 5rem;
-      top: 40%;
+      height: 5rem;
+      top: 55%;
       right: 15%;
     }
     &-film {
-      top: 88%;
-      right: 83%;
+      top: 94%;
+      left: 10%;
     }
   }
 }

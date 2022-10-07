@@ -13,6 +13,9 @@
   height: inherit;
   // background-color: #fff;
   position: relative;
+  @media only screen and (max-width: $bp-lg) {
+    width: 65%;
+  }
 }
 
 .slider__item {
@@ -27,23 +30,21 @@
   overflow: hidden;
   align-items: center;
   // padding: 1rem;
-  
+
   & > img {
- 
     // border: 1.5rem solid $color-milk-white;
     // border-radius: 1rem;
     width: inherit;
     height: inherit;
-    object-fit:contain;
+    object-fit: contain;
   }
 
   .slider__img {
-
-    &__elaine{
+    &__elaine {
       // background-color: $color-elaine-primary-light-1;
       border-color: $color-elaine-primary-light-1;
     }
-    &__nora{
+    &__nora {
       // background-color: $color-nora-primary-light-1;
       border-color: $color-nora-primary-light-1;
     }
@@ -88,9 +89,17 @@
     cursor: pointer;
     user-select: none;
     filter: drop-shadow($shadow-text-dark);
-    transition: all .2s linear;
+    transition: all 0.2s linear;
+    @media only screen and (max-width: $bp-lg) {
+      width: 4rem;
+      height: 4rem;
+    }
+    @media only screen and (max-width: $bp-sm) {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
 
-    &:hover{
+    &:hover {
       margin-top: -3px;
     }
 
@@ -102,16 +111,16 @@
   &__elaine {
     fill: $color-elaine-primary-light-1;
   }
-  &__nora{
+  &__nora {
     fill: $color-nora-primary-light-1;
   }
   &__next {
     right: 2rem;
-    animation: shake .8s infinite .5s;
+    animation: shake 0.8s infinite 0.5s;
   }
   &__pre {
     left: 2rem;
-     animation: shake .8s infinite;
+    animation: shake 0.8s infinite;
   }
 
   &__selects {
@@ -146,4 +155,3 @@
 //     opacity: 1;
 //   }
 // }
-

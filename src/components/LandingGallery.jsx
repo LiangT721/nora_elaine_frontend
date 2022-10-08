@@ -1,10 +1,10 @@
-import React , { useCallback, useEffect, useState} from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useHttpClient } from "../shared/hooks/http-hook";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import logo from "../assets/imgs/Nora&Elaine.png";
-import nora from "../assets/imgs/nora_portait.png"
-import elaine from "../assets/imgs/elaine_portait.png"
+import nora from "../assets/imgs/nora_portait.png";
+import elaine from "../assets/imgs/elaine_portait.png";
 import SvgIcons from "../assets/svgs/symbol-defs.svg";
 import { intro, URL } from "../variable";
 
@@ -30,14 +30,16 @@ const LandingGallery = () => {
   }, [fetchPaintingsList]);
   return (
     <div className="landing-gallery">
-    <svg className="home__svgs home__svgs-photo" onClick={()=>navigate("/temp")}>
-          <use xlinkHref={`${SvgIcons}#icon-pictures`}></use>
-        </svg>
+      <svg
+        className="home__svgs home__svgs-photo"
+        onClick={() => navigate("/temp")}
+      >
+        <use xlinkHref={`${SvgIcons}#icon-pictures`}></use>
+      </svg>
       <div className="landing-gallery__bg">
         <img src={logo} className="landing-gallery__logo" alt="avater" />
-        <img src={nora} className="home__svgs home__svgs-nora" alt="avater" />
-        <img src={elaine} className="home__svgs home__svgs-elaine" alt="avater" />
-  
+        
+      
         <svg className="home__svgs home__svgs-bird">
           <use xlinkHref={`${SvgIcons}#icon-bird`}></use>
         </svg>
@@ -77,11 +79,17 @@ const LandingGallery = () => {
           <Text className="landing-gallery__elaine__title">
             {intro.elaine.name}
           </Text>
+          <img
+          src={elaine}
+          className="landing-gallery__elaine__img"
+          alt="avater"
+          onClick={() => navigate(`/user/${elainelist[0].user}`)}
+        />
           <div className="landing-gallery__elaine__text">
             <Text>{intro.elaine.intro}</Text>
           </div>
         </div>
-        <Slider 
+        <Slider
           className="landing-gallery__elaine__slider"
           creator="elaine"
           dots={false}
@@ -93,17 +101,22 @@ const LandingGallery = () => {
           <div className="landing-gallery__nora__text">
             <Text>{intro.nora.intro}</Text>
           </div>
-
+          <img
+          src={nora}
+          className="landing-gallery__nora__img"
+          alt="avater"
+          onClick={() => navigate(`/user/${noralist[0].user}`)}
+        />
           <Text className="landing-gallery__nora__title">
             {intro.nora.name}
           </Text>
         </div>
-        <Slider 
-        className="landing-gallery__nora__slider"
-        creator="nora"
-        dots={false}
-        list={noralist}
-      />
+        <Slider
+          className="landing-gallery__nora__slider"
+          creator="nora"
+          dots={false}
+          list={noralist}
+        />
       </div>
     </div>
   );

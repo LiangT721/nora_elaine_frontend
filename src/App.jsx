@@ -10,6 +10,7 @@ import Home from "./pages/Home/Home";
 import Upload from "./pages/Upload/Upload";
 import UserInfo from "./pages/UserInfo/UserInfo";
 import Temp from "./pages/Home/temp";
+import UserPainting from "./pages/UserPainting/UserPainting";
 
 import "./sass/App.scss";
 
@@ -60,6 +61,7 @@ function App() {
           <Route path="/upload" element={<Upload />} />
           <Route path="/userinfo" element={<UserInfo />} />
           <Route path="/temp" element={<Temp />} />
+          <Route path="/user/:uid" element={<UserPainting />} />
         </Routes>
       </LanguageProvider>
     </div>

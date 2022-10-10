@@ -10,9 +10,6 @@
   );
 
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
 
   @media only screen and (max-width: $bp-lg) {
     height: 100vh;
@@ -45,43 +42,20 @@
     );
     height: 190vh;
   }
-  &__bg {
-    position: absolute;
-    // border: 1px solid black;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
+
+  &__contents {
     max-width: $landing-max-width;
-    height: 100%;
-    z-index: 0;
-    @media only screen and (max-width: $bp-sm) {
-      height: 190vh;
-    }
-  }
-
-  &__logo {
-    width: 25%;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotateZ(-3deg);
-
-    @media only screen and (max-width: $bp-xxxl) {
-      width: 23%;
-    }
-
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     @media only screen and (max-width: $bp-lg) {
-      width: 30%;
-    }
-    @media only screen and (max-width: $bp-md) {
-      width: 30%;
-    }
-    @media only screen and (max-width: $bp-sm) {
-      width: 60%;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
     }
   }
-
   &__elaine,
   &__nora {
     height: 100%;
@@ -90,28 +64,23 @@
     position: relative;
     overflow: hidden;
     z-index: 10;
-   
+    display: grid;
+
     @media only screen and (max-width: $bp-sm) {
       height: 90vh;
     }
   }
   &__elaine {
     justify-self: end;
-
-    &__slider {
-      position: absolute;
-      bottom: 8%;
-      left: 5%;
-      transform: rotateZ(-5deg);
-      width: 55rem;
-      height: 32rem;
-    }
+    display: grid;
+    grid-template-rows: 1fr 1fr;
 
     &__intro {
-      width: 70%;
-      position: absolute;
-      top: 7%;
-      left: 15%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: center;
+      padding: 5rem;
     }
     &__title {
       font-family: $font-display;
@@ -119,477 +88,260 @@
 
       font-size: 5rem;
       transform: rotateZ(2deg);
-      margin-bottom: 2rem;
+    }
+    &__link {
+      position: absolute;
+      height: 23rem;
+      align-self: start;
+      width: 30rem;
+      cursor: pointer;
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+
+      & > * {
+        position: absolute;
+      }
+      &-text {
+        color: $color-milk-white;
+        font-size: 1.6rem;
+        top: 0;
+      }
+      &-arrow {
+        width: 2rem;
+        top: 6rem;
+      }
+      &-img {
+        height: 15rem;
+        animation: scale 1.5s infinite;
+        bottom: 0;
+      }
     }
     &__text {
-      width: 50%;
+      grid-column: 1 / 2;
       font-size: 1.8rem;
       font-weight: 500;
       transform: translateX(-2rem) rotateZ(-2deg);
       color: $color-milk-white;
       text-shadow: $shadow-text-dark;
     }
-    &__img{
-      position: absolute;
-      width: 15rem;
-      right: 10%;
-      top: 10%;
-      cursor: pointer;
-    }
-    @media only screen and (max-width: $bp-xxxl) {
-      &__intro {
-        top: 10%;
-      }
-      &__text {
-        font-size: 1.6rem;
-      }
-      &__slider {
-        bottom: 10%;
-      }
+    &__slider {
+      transform: rotateZ(-2deg);
+      width: 60rem;
+      height: 32rem;
+      margin-left: 5%;
+      margin-top: 10vh;
+      z-index: 5;
     }
     @media only screen and (max-width: $bp-xxl) {
       &__slider {
-        width: 45rem;
+        width: 50rem;
         height: 28rem;
-        bottom: 12%;
-        left: 7%;
       }
       &__intro {
+        padding: 5rem 10rem;
+      }
+
+      &__text {
         width: 80%;
       }
-      &__title {
-        font-size: 4rem;
-      }
-      &__text{
-        width: 60%;
-      }
-      &__img{
+      &__link {
         width: 12rem;
       }
     }
     @media only screen and (max-width: $bp-xl) {
-      &__slider {
-        width: 40rem;
-        height: 25rem;
+      &__intro {
+        width: 80%;
       }
     }
-
     @media only screen and (max-width: $bp-lg) {
+      max-width: 100%;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 4fr 3fr;
+      grid-template-rows: 1fr;
       &__intro {
-        width: 40%;
-        left: 5%;
-        top: 20%;
+        width: 100%;
+        height: 100%;
+        padding: 4rem 2rem;
+        justify-items: center;
+      }
+      &__text {
+        // grid-column: 1 / -1;
+        width: 90%;
+        transform: translateX(3rem) rotateZ(-2deg);
+      }
+      &__link {
+        margin-top: 5%;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
       }
       &__slider {
-        top: 15%;
-        left: 50%;
+        margin-top: 5%;
+        // margin-left: 10%;
         width: 40rem;
         height: 25rem;
-      }
-      &__img{
-        right: 5%;
       }
     }
     @media only screen and (max-width: $bp-sm) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      height: 90vh;
       &__intro {
-        width: 70%;
-        height: 40vh;
-        left: 15%;
-        top: 10%;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        
-      }
-      &__title {
-        align-self: center;
-        margin-bottom: 3rem;
-        transform: rotateZ(-3deg);
-      }
-      &__text {
-        transform: rotateZ(0);
-        grid-column: 1 / -1;
-        width: 100%;
-      }
-      &__img{
-        position: relative;
-        right: 5%;
+        width: 95%;
+        // row-gap: 6rem;
+        padding-bottom: 0;
       }
       &__slider {
-        top: 55%;
-        left: 2.5%;
-        width: 95%;
-        height: 28vh;
-        transform: rotateZ(0);
+        width: 40rem;
+        margin: 0 auto;
+        align-self: end;
+        margin-bottom: 20%;
+      }
+      &__title {
+        align-self: end;
+      }
+      &__text {
+        grid-column: 1 / -1;
+      }
+      &__link {
+        height: 13rem;
+        &-img {
+          height: 10rem;
+          right: 0;
+        }
       }
     }
   }
 
   &__nora {
+    display: grid;
+    grid-template-rows: 3fr 1fr;
     &__slider {
-      position: absolute;
-      top: 7%;
-      right: 10%;
-      transform: rotateZ(8deg);
+      margin-top: 5%;
+      margin-left: 20%;
+      transform: rotateZ(5deg);
       width: 55rem;
       height: 32rem;
       z-index: 5;
     }
     &__intro {
-      width: 75%;
-      position: absolute;
-      bottom: 7%;
-      right: 8%;
-      display: flex;
+      // background-color: #fff;
+      align-self: end;
+      width: 80%;
+      height: 80%;
+      margin-left: 15%;
+      margin-bottom: 5%;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      align-items: center;
     }
     &__title {
+      align-self: start;
+      justify-self: center;
       font-family: $font-display;
       font-size: 6rem;
       text-shadow: $shadow-text-light;
-      transform: translate(8rem, 9rem) rotateZ(-2deg);
-      // margin-bottom: 2rem;
+      grid-column: 2/3;
+      grid-row: 2 / 3;
     }
     &__text {
-      width: 60%;
+      width: 100%;
       font-size: 1.8rem;
       font-weight: 500;
       color: $color-elaine-primary-light-1;
       text-shadow: $shadow-text-dark;
       transform: rotateZ(-5deg);
+      grid-column: 1/2;
+      grid-row: 1 / 3;
     }
-    &__img{
-      position: absolute;
-      height: 15rem;
-      bottom: 40%;
-      right: 0;
+    &__link {
+      position: relative;
+      height: 22rem;
       z-index: 100;
       cursor: pointer;
+      grid-column: 2/3;
+      grid-row: 1 / 2;
+      & > * {
+        position: absolute;
+      }
+      &-arrow {
+        width: 3rem;
+        top: 3rem;
+        left: 2rem;
+      }
+      &-img {
+        width: 15rem;
+        bottom: 0;
+        right: 0;
+        animation: scale 1.5s infinite;
+      }
+      &-text {
+        font-size: 1.6rem;
+        color: $color-milk-white;
+        top: 0;
+      }
     }
 
-    
     @media only screen and (max-width: $bp-xxxl) {
-      &__intro {
-        width: 70%;
-        right: 10%;
-      }
-      &__title {
-        font-size: 5rem;
-      }
-      &__text {
-        font-size: 1.6rem;
-      }
-      &__slider {
-        height: 30rem;
-      }
+      // &__intro {
+      //   width: 70%;
+      //   right: 10%;
+      // }
+      // &__title {
+      //   font-size: 5rem;
+      // }
+      // &__text {
+      //   font-size: 1.6rem;
+      // }
+      // &__slider {
+      //   height: 30rem;
+      // }
     }
     @media only screen and (max-width: $bp-xxl) {
       &__slider {
-        height: 25rem;
-        width: 50rem;
+        width: 45rem;
         top: 10%;
-      }
-      &__title {
-        transform: translate(5rem, 12rem) rotateZ(-2deg);
       }
     }
     @media only screen and (max-width: $bp-xl) {
       &__intro {
-        width: 75%;
-      }
-      &__title {
-        transform: translate(3rem, 16rem) rotateZ(-2deg);
+        margin-left: 10%;
+        column-gap: 5rem;
       }
       &__slider {
-        width: 40rem;
-        height: 23rem;
+        margin-top: 15%;
       }
     }
     @media only screen and (max-width: $bp-lg) {
-      &__intro {
-        width: 40%;
-        left: 55%;
-        bottom: 15%;
-        display: grid;
-        row-gap: 4rem;
-      }
-      &__title {
-        transform: translate(0, 0) rotateZ(-2deg);
-        grid-row: 1 / 2;
-      }
-      &__text {
-        width: 100%;
-        transform: rotateZ(2deg);
-      }
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      width: 100%;
+      max-width: 100%;
+
       &__slider {
-        top: 40%;
-        left: 5%;
+        margin-left: 10%;
+        margin-top: 30%;
         width: 45rem;
         height: 25rem;
         transform: rotateZ(2deg);
       }
-      &__img{
-        bottom: 60%;
-      }
     }
     @media only screen and (max-width: $bp-sm) {
-      &__intro {
-        width: 70%;
-        height: 35%;
-        left: 15%;
-        bottom: 10%;
-        display: grid;
-        row-gap: 0;
-        transform: rotateZ(0);
-        grid-template-rows: 1fr min-content;
-      }
-
-      &__text {
-        transform: rotateZ(0);
-      }
+      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       &__slider {
-        top: 15%;
-        left: 2.5%;
-        width: 95%;
-        height: 30vh;
-        transform: rotateZ(0);
+        width: 40rem;
       }
     }
   }
-}
 
-.home__svgs {
-  width: 6rem;
-  fill: $color-milk-white;
-  position: absolute;
-  @media only screen and (max-width: $bp-xl) {
-    width: 5rem;
-  }
-  &-photo {
-    width: 8rem;
-    fill: $color-elaine-primary-light-1;
-    top: 10%;
-    left: 48%;
-    filter: drop-shadow($shadow-text-dark);
-    // transform: rotateZ(-15deg);
-    animation: shake 1.5s infinite;
-    cursor: pointer;
-    z-index: 100;
-  }
-  &-bird {
-    width: 5rem;
-    fill: $color-elaine-primary-dark;
-    bottom: 20%;
-    left: 42%;
-    transform: rotateZ(-5deg);
-  }
-  &-music {
-    fill: $color-elaine-primary-light-1;
-    bottom: 5%;
-    left: 35%;
-    transform: rotateZ(5deg);
-  }
-  &-lollipop {
-    width: 4rem;
-    fill: $color-elaine-primary-light-1;
-    bottom: 40%;
-    left: 5%;
-  }
-  &-pencil {
-    width: 4rem;
-    fill: $color-elaine-primary-light-1;
-    top: 55%;
-    left: 43%;
-    transform: rotateZ(180deg);
-  }
-  &-headphone {
-    width: 7rem;
-    fill: $color-milk-white;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%) rotateZ(20deg);
-  }
-  &-gift {
-    fill: $color-nora-primary-light-2;
-    top: 0;
-    right: 2%;
-    transform: rotateZ(-10deg);
-  }
-  &-cassette {
-    width: 8rem;
-    fill: $color-nora-primary-light-2;
-    top: 40%;
-    right: 3%;
-    transform: rotateZ(10deg);
-  }
-  &-planet {
-    width: 8rem;
-    fill: $color-nora-primary-light-3;
-    top: 38%;
-    right: 32%;
-    transform: rotateZ(-10deg);
-    z-index: 10;
-  }
-  &-pen {
-    width: 4rem;
-    fill: $color-nora-primary-light-3;
-    top: 33%;
-    left: 51%;
-    transform: rotateZ(-10deg);
-  }
-  &-film {
-    width: 8rem;
-    fill: $color-nora-primary-light-1;
-    top: 55%;
-    right: 20%;
-    transform: rotateZ(-10deg);
-  }
-  &-nora {
-    width: 15rem;
-    right: 6%;
-    bottom: 18%;
-  }
-  &-elaine {
-    width: 15rem;
-    left: 32%;
-    top: 10%;
-  }
-  @media only screen and (max-width: $bp-xl) {
-    &-nora,
-    &-elaine {
-      width: 12rem;
-    }
-    &-elaine {
-      top: 15%;
-    }
-    &-planet,
-    &-film,
-    &-photo {
-      width: 7rem;
-    }
-  }
-  @media only screen and (max-width: $bp-lg) {
-    &-photo {
-      left: 10%;
-      top: 55%;
-    }
-    &-elaine {
-      top: 35%;
-      left: 10%;
-    }
-    &-nora {
-      width: 15rem;
-      bottom: 25%;
-      right: 10%;
-    }
-    &-bird {
-      top: 35%;
-      left: 42%;
-    }
-    &-music {
-      top: 1%;
-      left: 85%;
-    }
-    &-lollipop {
-      top: 6%;
-      width: 6rem;
-      left: 30%;
-    }
-    &-pencil {
-      top: 30%;
-      left: 30%;
-    }
-    &-headphone {
-      top: 40%;
-      left: 90%;
-    }
-    &-gift {
-      top: 85%;
-      right: 2%;
-    }
-    &-cassette {
-      width: 4rem;
-      top: 55%;
-      right: 45%;
-    }
-    &-planet {
-      top: 38%;
-      right: 23%;
-    }
-    &-pen {
-      top: 47%;
-      left: 68%;
-    }
-    &-film {
-      top: 85%;
-      right: 83%;
-    }
-  }
-  @media only screen and (max-width: $bp-sm) {
-    // width: auto;
-    height: 4rem;
-    &-snowflake {
-      top: 2%;
-      left: 10%;
-    }
-    &-photo {
-      width: 5rem;
-      left: 8%;
-      top: 45%;
-    }
-    &-elaine {
-      width: auto;
-      height: 7%;
-      top: 3%;
-      left: 50%;
-    }
-    &-nora {
-      width: auto;
-      height: 8%;
-      bottom: 18%;
-      right: 10%;
-    }
-    &-bird {
-      top: 22%;
-      left: 42%;
-    }
-    &-lollipop {
-      top: 8%;
-      width: 4rem;
-      left: 30%;
-    }
-    &-pencil {
-      display: none;
-      top: 51%;
-      left: 35%;
-    }
-
-    &-pen {
-      display: none;
-
-      top: 45%;
-      left: 40%;
-    }
-    &-headphone {
-      height: 5rem;
-      top: 45%;
-      left: 90%;
-    }
-    &-gift {
-      height: 6rem;
-      top: 95%;
-      right: 15%;
-    }
-    &-cassette {
-      top: 70%;
-      right: 75%;
-    }
-    &-planet {
-      height: 5rem;
-      top: 55%;
-      right: 15%;
-    }
-    &-film {
-      top: 94%;
-      left: 10%;
+  &__toggle {
+    position: absolute;
+    z-index: 200;
+    & > button {
+      border-top-color: #000;
     }
   }
 }

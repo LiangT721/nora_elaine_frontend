@@ -1,13 +1,13 @@
 import React, { useRef, useCallback, useState } from "react";
 import PopUpGB from "../shared/components/PopUpBG";
-import Text from "../shared/components/Text";
+import PaintingSlider from "./PaintSlider";
 
 import { URL } from "../variable";
 
 const PaintingList = (props) => {
   const { list, loading, hasMore, setSkipNum, isDefaultList } = props;
-  const [isImageDetail, setIsImageDetail] = useState(false);
-  const [imageDetail, setImageDetail] = useState({});
+  const [isSlider, setIsSlider] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
   const observer = useRef();
   const lastRef = useCallback(
     (node) => {
@@ -23,66 +23,23 @@ const PaintingList = (props) => {
     [loading, hasMore, isDefaultList, setSkipNum]
   );
 
-  const selectImage = (el) => {
-    console.log(el);
-    setImageDetail(el);
-    setIsImageDetail(true);
+  const selectImage = (index) => {
+    setStartIndex(index);
+    setIsSlider(true);
   };
   const cancelImage = () => {
-    setImageDetail({});
-    setIsImageDetail(false);
+    setStartIndex(0);
+    setIsSlider(false);
   };
   return (
     <div className="painting-list">
-      {isImageDetail && (
-        <PopUpGB onClick={cancelImage}>
-          <div className="image-detail">
-            <img
-              className="image-detail__img"
-              src={`${URL}api/${imageDetail.image}`}
-              alt=""
+      {isSlider && (
+        <PopUpGB>
+            <PaintingSlider
+              list={list}
+              startIndex={startIndex}
+              cancelImage={cancelImage}
             />
-            <div className="image-detail__info">
-              <div className="image-detail__name">
-                <Text className="image-detail__title" >{["name", "名称"]}</Text>
-                <Text className="image-detail__content image-detail__content__name">
-                  {imageDetail.name}
-                </Text>
-              </div>
-              <div>
-                <Text className="image-detail__title">
-                  {["Creator", "作者"]}
-                </Text>
-                <Text className="image-detail__content">
-                  {imageDetail.creator}
-                </Text>
-              </div>
-              <div>
-                <Text className="image-detail__title">
-                  {["category", "类型"]}
-                </Text>
-                <Text className="image-detail__content">
-                  {imageDetail.category}
-                </Text>
-              </div>
-              <div>
-                <Text className="image-detail__title">
-                  {["content", "内容"]}
-                </Text>
-                <Text className="image-detail__content">
-                  {imageDetail.content}
-                </Text>
-              </div>
-              <div>
-                <Text className="image-detail__title">
-                  {["created date", "创作日期"]}
-                </Text>
-                <Text className="image-detail__content">
-                  {imageDetail.created_date}
-                </Text>
-              </div>
-            </div>
-          </div>
         </PopUpGB>
       )}
       {list.length > 0 &&
@@ -96,7 +53,7 @@ const PaintingList = (props) => {
                 alt=""
                 key={el._id}
                 onClick={() => {
-                  selectImage(el);
+                  selectImage(index);
                 }}
               />
             );
@@ -108,7 +65,7 @@ const PaintingList = (props) => {
                 alt=""
                 key={el._id}
                 onClick={() => {
-                  selectImage(el);
+                  selectImage(index);
                 }}
               />
             );

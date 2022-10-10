@@ -1,43 +1,4 @@
-.painting-list {
-  max-width: 1600px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 2rem;
-  @media only screen and (max-width: $bp-sm) {
-    padding: 0 2px;
-  }
-
-  &__img {
-    flex-grow: 1;
-    height: 25rem;
-    object-fit: cover;
-    padding: 1px;
-    cursor: pointer;
-
-    &:nth-last-child(5),
-    &:nth-last-child(4),
-    &:nth-last-child(3),
-    &:nth-last-child(2),
-    &:nth-last-child(1) {
-      flex-grow: 0;
-    }
-
-    @media only screen and (max-width: $bp-sm) {
-      // &:nth-last-child(2),
-      height: 17rem;
-      &:nth-last-child(5),
-      &:nth-last-child(4),
-      &:nth-last-child(3),
-      &:nth-last-child(2),
-      &:nth-last-child(1) {
-        flex-grow: 1;
-      }
-    }
-  }
-}
-
-.image-detail {
+.painting-slider {
   border: 1px solid white;
   width: 100vw;
   height: 100vh;
@@ -105,5 +66,60 @@
   }
   &__name {
     grid-column: 1 / 3;
+  }
+
+  &__exit{
+    height: 2.5rem;
+    width: 2.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: 1px solid white;
+    z-index: 1000;
+    cursor: pointer;
+    border-radius: 2px;
+
+    &:hover{
+      transform: scale(1.05);
+    }
+    &:active{
+      transform: scale(1);
+    }
+    &::before,
+    &::after{
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: calc(50% - .5px);
+      background-color: #fff;
+      transform-origin: center;
+    }
+    &::before{
+      transform: rotateZ(45deg);
+    }
+    &::after{
+      transform: rotateZ(-45deg);
+    }
+
+  }
+
+  &__button{
+    font-size: 4rem;
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border: none;
+
+    &-left{
+      left:.5rem
+    }
+    &-right{
+      right:.5rem
+    }
   }
 }

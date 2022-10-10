@@ -13,6 +13,7 @@
     height: 25rem;
     object-fit: cover;
     padding: 1px;
+    cursor: pointer;
 
     &:nth-last-child(5),
     &:nth-last-child(4),
@@ -78,7 +79,7 @@
       grid-template-columns: repeat(3, 1fr);
       justify-content: space-between;
       width: 100%;
-      min-height: 20vh;
+      min-height: 15vh;
     }
   }
   &__title {

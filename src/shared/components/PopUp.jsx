@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 
 const PopUp = (props) => {
   return ReactDOM.createPortal(
-    <div className="backdrop" onClick={props.onClick}></div>,
+    <div className="pop-up" onClick={props.onClick}>
+    {props.children}
+    </div>,
     document.getElementById("backdrop-hook")
   );
 }

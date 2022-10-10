@@ -13,7 +13,7 @@ import Input from "../../shared/components/Input";
 import Text from "../../shared/components/Text";
 import LanguageToggle from "../../shared/components/LanguageToggle";
 import UserSignUp from "../../components/UserSignUp";
-import PopUp from "../../shared/components/PopUp";
+import PopUpBG from "../../shared/components/PopUpBG";
 
 const UserInfo = () => {
   const [invalidAlarm, setInvalidAlarm] = useState(false);
@@ -21,7 +21,7 @@ const UserInfo = () => {
   const [, setCookie] = useCookies(["token"]);
   const { sendRequest } = useHttpClient();
   const navigate = useNavigate();
-  const { authState, dispatch } = useContext(authContext);
+  const { dispatch } = useContext(authContext);
 
   const [formState, inputHandler] = useForm(
     {
@@ -76,7 +76,7 @@ const UserInfo = () => {
 
   return (
     <div className="user-info">
-      {!isLogin && <PopUp />}
+      {!isLogin && <PopUpBG />}
       <UserSignUp
         className={`${!isLogin && "signUp__container__enter"}`}
         closePopUp={() => setIsLogin(true)}

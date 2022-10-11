@@ -10,17 +10,17 @@
     color: white;
     width: 100vw;
     height: 100vh;
-  }
 
-  @media only screen and (max-width: $bp-xxxl) {
-    grid-template-columns: 1fr max-content;
-    max-height: 100vh;
-    justify-items: center;
-  }
-  @media only screen and (max-width: $bp-md) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr min-content;
-    justify-content: center;
+    @media only screen and (max-width: $bp-xxxl) {
+      grid-template-columns: 1fr max-content;
+      max-height: 100vh;
+      justify-items: center;
+    }
+    @media only screen and (max-width: $bp-md) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr min-content;
+      justify-content: center;
+    }
   }
   &__img {
     height: inherit;
@@ -68,7 +68,7 @@
     grid-column: 1 / 3;
   }
 
-  &__exit{
+  &__exit {
     height: 2.5rem;
     width: 2.5rem;
     position: absolute;
@@ -79,33 +79,32 @@
     cursor: pointer;
     border-radius: 2px;
 
-    &:hover{
+    &:hover {
       transform: scale(1.05);
     }
-    &:active{
+    &:active {
       transform: scale(1);
     }
     &::before,
-    &::after{
+    &::after {
       content: "";
       display: block;
       width: 100%;
       height: 1px;
       position: absolute;
-      top: calc(50% - .5px);
+      top: calc(50% - 0.5px);
       background-color: #fff;
       transform-origin: center;
     }
-    &::before{
+    &::before {
       transform: rotateZ(45deg);
     }
-    &::after{
+    &::after {
       transform: rotateZ(-45deg);
     }
-
   }
 
-  &__button{
+  &__button {
     font-size: 4rem;
     z-index: 10;
     position: fixed;
@@ -115,11 +114,11 @@
     cursor: pointer;
     border: none;
 
-    &-left{
-      left:.5rem
+    &-left {
+      left: 0.5rem;
     }
-    &-right{
-      right:.5rem
+    &-right {
+      right: 0.5rem;
     }
   }
 }

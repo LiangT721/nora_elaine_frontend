@@ -21,6 +21,7 @@ const LandingSlider = (props) => {
   };
   return (
     <div className={`landing-slider ${props.className}`}>
+    
       <button
         className="landing-slider__button landing-slider__button-left"
         onClick={previous}

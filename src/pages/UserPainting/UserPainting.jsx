@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
 import { URL } from "../../variable";
@@ -11,6 +11,7 @@ import Text from "../../shared/components/Text";
 
 const UserPainting = () => {
   const { uid } = useParams();
+  const navigate = useNavigate()
   const [isNora, setIsNora] = useState(uid === "633b4db76dbef6d81ddaa05e");
   const { sendRequest } = useHttpClient();
   const [skipNum, setSkipNum] = useState(0);
@@ -67,6 +68,11 @@ const UserPainting = () => {
             {["Elaine", "汤一冉"]}
           </Text>
         )}
+        <div className="user-painting__link">
+          <a className="page-link user-painting__link-home"
+            onClick={()=>navigate('/')}
+          > <u>home</u></a>
+        </div>
       </div>
       <SearchingPart
         isNora={isNora}

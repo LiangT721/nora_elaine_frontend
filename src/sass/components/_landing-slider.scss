@@ -1,17 +1,14 @@
 .landing-slider {
-  // background-color: rgb(248, 79, 79);
+  position: relative;
   &__container{
     width: inherit;
   }
   &__item {
     width: inherit;
     height: inherit;
-    // background-color: rgb(4, 226, 226);
   }
   &__img {
     width: inherit;
-    // width: 90%;
-    // margin-left: 5%;
     height: inherit;
     object-fit: contain;
   }

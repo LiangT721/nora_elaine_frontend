@@ -20,12 +20,16 @@
 
   &__title {
     max-width: 1600px;
+    // background-color: #fff;
     margin: 0 auto;
-    display: flex;
+    display: grid;
     align-items: baseline;
     line-height: 5rem;
-    padding-left: 10rem;
-    
+    padding-left:10rem;
+    padding-right:20rem;
+    grid-template-columns: min-content 1fr min-content;
+    row-gap: 0;
+    align-items: end;
     &__text {
       font-size: 7rem;
       font-family: $font-display;
@@ -39,6 +43,11 @@
         font-size: 5rem;
       }
     }
+
+  }
+  &__link{
+    align-self: end;
+    
   }
 
   &__img {

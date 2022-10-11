@@ -74,30 +74,29 @@
     justify-self: end;
     display: grid;
     grid-template-rows: 1fr 1fr;
-
     &__intro {
       width: 100%;
       display: grid;
       grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 2fr;
       align-items: center;
-      padding: 5rem;
+      padding-left: 10rem;
+      justify-items: center;
     }
     &__title {
       font-family: $font-display;
       text-shadow: $shadow-text-light;
-
+      align-self: end;
       font-size: 5rem;
       transform: rotateZ(2deg);
     }
     &__link {
-      position: absolute;
+      position: relative;
       height: 23rem;
-      align-self: start;
-      width: 30rem;
+      width: 15rem;
       cursor: pointer;
       grid-column: 2 / 3;
       grid-row: 1 / 3;
-
       & > * {
         position: absolute;
       }
@@ -108,10 +107,11 @@
       }
       &-arrow {
         width: 2rem;
-        top: 6rem;
+        top: 4rem;
+        left: 10%;
       }
       &-img {
-        height: 15rem;
+        width: 100%;
         animation: scale 1.5s infinite;
         bottom: 0;
       }
@@ -120,38 +120,53 @@
       grid-column: 1 / 2;
       font-size: 1.8rem;
       font-weight: 500;
-      transform: translateX(-2rem) rotateZ(-2deg);
+      transform: rotateZ(-2deg);
+      align-self: start;
+      margin-top: 3rem;
       color: $color-milk-white;
       text-shadow: $shadow-text-dark;
     }
     &__slider {
       transform: rotateZ(-2deg);
-      width: 60rem;
-      height: 32rem;
+      max-width: 640px;
+      width: 36vw;
+      height: 35vh;
       margin-left: 5%;
-      margin-top: 10vh;
+     margin-top: 5vh;
       z-index: 5;
     }
     @media only screen and (max-width: $bp-xxl) {
-      &__slider {
-        width: 50rem;
-        height: 28rem;
-      }
       &__intro {
-        padding: 5rem 10rem;
+        padding-left: 5rem;
+      }
+      &__slider {
+        margin-bottom: 10vh;
       }
 
       &__text {
         width: 80%;
       }
       &__link {
-        width: 12rem;
+        width: 13rem;
+        height: 20rem;
+        &-text {
+          font-size: 1.4rem;
+          width: 13rem;
+        }
       }
     }
     @media only screen and (max-width: $bp-xl) {
-      &__intro {
-        width: 80%;
-      }
+    &__intro{
+      padding-right: 2rem;
+    }
+    &__text{
+      font-size: 1.5rem;
+    }
+    &__link{
+      width: 11rem;
+      
+      
+    }
     }
     @media only screen and (max-width: $bp-lg) {
       max-width: 100%;
@@ -163,24 +178,16 @@
       &__intro {
         width: 100%;
         height: 100%;
-        padding: 4rem 2rem;
         justify-items: center;
+        grid-template-rows: 2fr 3fr;
       }
       &__text {
-        // grid-column: 1 / -1;
         width: 90%;
-        transform: translateX(3rem) rotateZ(-2deg);
-      }
-      &__link {
-        margin-top: 5%;
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
+        transform: rotateZ(-2deg);
       }
       &__slider {
-        margin-top: 5%;
-        // margin-left: 10%;
-        width: 40rem;
-        height: 25rem;
+        height: 30vh;
+        margin-top: 6vh ;
       }
     }
     @media only screen and (max-width: $bp-sm) {
@@ -188,27 +195,27 @@
       grid-template-rows: 1fr 1fr;
       height: 90vh;
       &__intro {
-        width: 95%;
-        // row-gap: 6rem;
-        padding-bottom: 0;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        margin-top: 5rem;
       }
       &__slider {
-        width: 40rem;
-        margin: 0 auto;
-        align-self: end;
-        margin-bottom: 20%;
+        width: 90vw;
+        margin-left: 5vw;
+        height: 40vh;
+        transform: rotateZ(0deg);
       }
-      &__title {
-        align-self: end;
-      }
+  
       &__text {
-        grid-column: 1 / -1;
+        grid-column: 1 / 3;
       }
       &__link {
-        height: 13rem;
-        &-img {
-          height: 10rem;
-          right: 0;
+        width: 12rem;
+        height: 15rem;
+        grid-row: 1 / 2;
+        &-img{
+          width: 8rem;
+          margin-left: 2rem;
         }
       }
     }
@@ -216,26 +223,25 @@
 
   &__nora {
     display: grid;
-    grid-template-rows: 3fr 1fr;
+    grid-template-rows: 1fr 1fr;
     &__slider {
-      margin-top: 5%;
-      margin-left: 20%;
+      margin-top: 8vh;
+      margin-left: 10%;
       transform: rotateZ(5deg);
-      width: 55rem;
-      height: 32rem;
+      width: 40vw;
+      height: 38vh;
       z-index: 5;
+      max-width: 640px;
     }
     &__intro {
-      // background-color: #fff;
       align-self: end;
-      width: 80%;
-      height: 80%;
-      margin-left: 15%;
-      margin-bottom: 5%;
+      width: 100%;
+      height: 50vh;
       display: grid;
       grid-template-columns: 2fr 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: 2fr 1fr;
       align-items: center;
+      padding: 10%;
     }
     &__title {
       align-self: start;
@@ -272,7 +278,7 @@
         left: 2rem;
       }
       &-img {
-        width: 15rem;
+        height: 90%;
         bottom: 0;
         right: 0;
         animation: scale 1.5s infinite;
@@ -300,18 +306,18 @@
       // }
     }
     @media only screen and (max-width: $bp-xxl) {
-      &__slider {
-        width: 45rem;
-        top: 10%;
+      &__link{
+        height: 18rem;
       }
     }
     @media only screen and (max-width: $bp-xl) {
-      &__intro {
-        margin-left: 10%;
-        column-gap: 5rem;
-      }
-      &__slider {
-        margin-top: 15%;
+     &__slider{
+      height: 35vh;
+      width: 40vw;
+     }
+      &__text{
+        font-size: 1.5rem;
+        width: 80%;
       }
     }
     @media only screen and (max-width: $bp-lg) {
@@ -319,20 +325,26 @@
       grid-template-rows: 1fr;
       width: 100%;
       max-width: 100%;
-
+      // align-items: end;
       &__slider {
-        margin-left: 10%;
-        margin-top: 30%;
-        width: 45rem;
-        height: 25rem;
-        transform: rotateZ(2deg);
+        margin-top: 12vh;
+        transform: rotateZ(-2deg);
+        height: 30vh;
       }
     }
     @media only screen and (max-width: $bp-sm) {
       grid-template-rows: repeat(2, 1fr);
       grid-template-columns: 1fr;
       &__slider {
-        width: 40rem;
+        width: 90vw;
+        height: 40vh;
+        margin-left: 5vw;
+        transform: rotateZ(0deg);
+        margin-top: 12vh;
+
+      }
+      &__intro{
+        height: 100%;
       }
     }
   }
@@ -341,7 +353,6 @@
     position: absolute;
     z-index: 200;
     & > button {
-      border-top-color: #000;
     }
   }
 }

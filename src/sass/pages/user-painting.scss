@@ -46,13 +46,17 @@
       &__text {
         font-size: 5rem;
       }
-      padding-right: 12rem;
+      padding-right: 5rem;
     }
   }
   &__link {
     align-self: end;
     display: flex;
     margin-right: 20rem;
+    @media only screen and (max-width: $bp-sm) {
+      margin-right: 0;
+      display: block;
+    }
     & > * {
       display: inline-block;
       text-transform: uppercase;

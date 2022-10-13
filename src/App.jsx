@@ -62,7 +62,7 @@ function App() {
           <Route path="/upload" element={<Upload />} />
           <Route path="/userinfo" element={<UserInfo />} />
           <Route path="/temp" element={<Temp />} />
-          <Route path="/user/:uid" element={<UserPainting />} />
+          <Route path="/user/:user" element={<UserPainting />} />
         </Routes>
       </LanguageProvider>
     </div>

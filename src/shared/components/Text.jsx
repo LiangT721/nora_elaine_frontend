@@ -13,7 +13,7 @@ const Text = (props) => {
   }, [displayContent]);
 
   return (
-    <div className={`text ${props.className}`} style={props.style}>
+    <div className={`text ${props.className} ${props.textStyle}`} style={props.style}>
       {typeof displayContent === "string" ? (
         displayContent
       ) : eng ? (

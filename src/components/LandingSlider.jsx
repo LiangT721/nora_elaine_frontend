@@ -4,9 +4,27 @@ import SvgIcons from "../assets/svgs/symbol-defs.svg";
 
 const LandingSlider = (props) => {
   const { list } = props;
-  const [pre, setPre] = useState(list.length - 1);
+  const [pre, setPre] = useState(0);
   const [cur, setCur] = useState(0);
-  const [next, setNext] = useState(1);
+  const [next, setNext] = useState(0);
+
+  useEffect(()=>{
+    const num = list.length;
+    switch (num) {
+      case 1:
+        setPre(0);
+        break;
+      case 2:
+        setPre(1);
+        setNext(1);
+        break;
+      default:
+        setCur(0);
+        setPre(list.length - 1);
+        setNext(1);
+        break;
+    }
+  },[list])
   
   const Next = () => {
     if (cur >= 0 && cur < list.length - 2) {

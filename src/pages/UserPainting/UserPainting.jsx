@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import { useCookies } from "react-cookie";
 
 import { URL } from "../../variable";
+import { authContext } from "../../shared/hooks/Auth";
 import Nora from "../../assets/imgs/nora_portait.png";
 import Elaine from "../../assets/imgs/elaine_portait.png";
 import PaintingList from "../../components/PaintingList";
@@ -10,16 +12,19 @@ import SearchingPart from "../../components/SearchingPart";
 import Text from "../../shared/components/Text";
 
 const UserPainting = () => {
-  const { uid } = useParams();
   const { sendRequest } = useHttpClient();
+  const { authState, dispatch } = useContext(authContext);
+  const [, removeCookie] = useCookies(["token"]);
+  const navigate = useNavigate();
   const [skipNum, setSkipNum] = useState(0);
   const [defaultList, setDefaultList] = useState([]);
   const [isDefaultList, setIsDefaultList] = useState(true);
   const [displayList, setDisplayList] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
-
-  const isNora = uid === "633b4db76dbef6d81ddaa05e";
+  const { user } = useParams();
+  const uid = user.split("|")[1];
+  const isNora = user.split("|")[0] === "nora";
 
   useEffect(() => {
     setLoading(true);
@@ -49,15 +54,62 @@ const UserPainting = () => {
     setIsDefaultList(true);
   };
 
-  const displayListUpdate = (index,painting) => {
-    console.log(displayList[index])
+  const displayListUpdate = (index, painting) => {
     const list = displayList;
     list[index] = painting;
-    console.log(list[index])
     setDisplayList(list);
-  }
+  };
+
+  const displayListdelete = (index) => {
+    const list = displayList;
+    list.splice(index, 1);
+    setDisplayList(list);
+  };
+
+  const logout = () => {
+    removeCookie("token");
+    dispatch({
+      type: "LOGOUT"
+    });
+    navigate("/userinfo");
+  };
+
   return (
     <div className={`user-painting ${isNora && "user-painting__norabg"}`}>
+      <div className="user-painting__menu">
+        {authState.isLogin ? (
+          <div className="user-painting__greeting">
+            Hi &nbsp;
+            <Text>{authState.userInfo.user}</Text>,
+          </div> 
+        ): <div></div>}
+        <div className="user-painting__link">
+          <Link to="/" className="page-link user-painting__link-button">
+            <Text textStyle={"underline"}>{["Home", "主页"]}</Text>
+          </Link>
+          {authState.isLogin && (
+            <Link to="/upload" className="page-link user-painting__link-button">
+              <Text textStyle={"underline"}>{["upload", "上传"]}</Text>
+            </Link>
+          )}
+          {authState.isLogin ? (
+            <div
+              to="/userinfo"
+              className="page-link user-painting__link-button"
+              onClick={logout}
+            >
+              <Text textStyle={"underline"}>{["Logout", "登出"]}</Text>
+            </div>
+          ) : (
+            <Link
+              to="/userinfo"
+              className="page-link user-painting__link-button"
+            >
+              <Text textStyle={"underline"}>{["login", "登录"]}</Text>
+            </Link>
+          )}
+        </div>
+      </div>
       <div className="user-painting__title" onClick={resetDisplay}>
         {isNora && <img className="user-painting__img" src={Nora} alt="icon" />}
         {isNora && (
@@ -79,16 +131,6 @@ const UserPainting = () => {
             {["Elaine", "汤一冉"]}
           </Text>
         )}
-        <div className="user-painting__link">
-          <Link to="/" className="page-link user-painting__link-home">
-            <Text>{["Home", "主页"]}</Text>
-          </Link>
-          <Link to="/userinfo" className="page-link user-painting__link-home">
-            <Text className="page-link user-painting__link-home">
-              {["login", "登录"]}
-            </Text>
-          </Link>
-        </div>
       </div>
       <SearchingPart
         isNora={isNora}
@@ -102,6 +144,7 @@ const UserPainting = () => {
         setSkipNum={setSkipNum}
         isDefaultList={isDefaultList}
         displayListUpdate={displayListUpdate}
+        displayListdelete={displayListdelete}
       />
       <div className="user-painting__loading">
         {loading ? (

@@ -16,7 +16,7 @@ import Text from "../../shared/components/Text";
 
 const Upload = () => {
   const [invalidAlarm, setInvalidAlarm] = useState(false);
-  const [ isUpload, setIsupload] = useState(false)
+  const [isUpload, setIsupload] = useState(false);
   const navigate = useNavigate();
   const { authState } = useContext(authContext);
   const [formState, inputHandler] = useForm(
@@ -73,14 +73,9 @@ const Upload = () => {
   const { sendRequest } = useHttpClient();
 
   const paintingUploadSubmitHandler = async (event) => {
-    // console.log(authState.token);
-    // console.log(formState);
     if (formState.isValid) {
       event.preventDefault();
-      // console.log("a")
-      // console.log(formState.inputs);
-      setIsupload(true)
-      // console.log("b")
+      setIsupload(true);
       try {
         const formData = new FormData();
         formData.append("id", formState.inputs.id.value);
@@ -95,7 +90,7 @@ const Upload = () => {
         formData.append("token", authState.token);
         await sendRequest(`${URL}api/paintings`, "POST", formData);
         reset();
-        setIsupload(false)
+        setIsupload(false);
         navigate("/");
       } catch (error) {
         console.log(error);
@@ -216,8 +211,11 @@ const Upload = () => {
           </Button>
         </form>
         <div className="upload__bottom__btns">
-          <Link to="/" className="page-link upload__link">
+          <Link to="/" className="page-link upload__link mr-sm">
             &#10141; <u>home</u>{" "}
+          </Link>
+          <Link to="/userinfo" className="page-link upload__link">
+            &#10141; <u>login</u>{" "}
           </Link>
         </div>
       </div>

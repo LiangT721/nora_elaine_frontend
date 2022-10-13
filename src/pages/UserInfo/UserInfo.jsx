@@ -18,10 +18,10 @@ import PopUpBG from "../../shared/components/PopUpBG";
 const UserInfo = () => {
   const [invalidAlarm, setInvalidAlarm] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
-  const [, setCookie] = useCookies(["token"]);
+  const [, setCookie, removeCookie] = useCookies(["token"]);
   const { sendRequest } = useHttpClient();
   const navigate = useNavigate();
-  const { dispatch } = useContext(authContext);
+  const { authState, dispatch } = useContext(authContext);
 
   const [formState, inputHandler] = useForm(
     {
@@ -67,11 +67,19 @@ const UserInfo = () => {
         navigate("/upload");
       } catch (error) {
         console.log(error);
+        alert(error)
       }
     } else {
       setInvalidAlarm(true);
       console.log("error");
     }
+  };
+
+  const logout = () => {
+    removeCookie("token");
+    dispatch({
+      type: "LOGOUT"
+    });
   };
 
   return (
@@ -82,7 +90,16 @@ const UserInfo = () => {
         closePopUp={() => setIsLogin(true)}
       />
       <div className="user-info__container">
-        <LanguageToggle className="user-info__language-toggle" />
+        <div className="user-info__top">
+          {authState.isLogin && (
+            <div  className="user-info__greeting">Hi &nbsp;
+              <Text>
+                {authState.userInfo.user}
+              </Text>,
+            </div>
+          )}
+          <LanguageToggle className="user-info__language-toggle" />
+        </div>
         <form action="#" className="form login__form" onSubmit={loginHandler}>
           <Text className="form__heading mb-sm">{["Login", "登录"]}</Text>
           <Input
@@ -111,17 +128,22 @@ const UserInfo = () => {
           <Link to="/" className="button">
             home
           </Link>
-          <div>
-          <div
-          className="page-link sign-up__btn"
-          onClick={() => setIsLogin(false)}
-          >
-          &#10141; <u>Sign up</u>
-          </div>
-          <Link to="/upload" className="page-link sign-up__btn">
-          &#10141; <u>upload</u>
-          </Link>
-          </div>
+            <div
+              className="page-link sign-up__btn"
+              onClick={() => setIsLogin(false)}
+            >
+              &#10141; <u>Sign up</u>
+            </div>
+            {authState.isLogin && (
+              <Link to="/upload" className="page-link sign-up__btn">
+                &#10141; <u>upload</u>
+              </Link>
+            )}
+            {authState.isLogin && (
+              <p className="page-link sign-up__btn" onClick={logout}>
+                &#10141; <u>logout</u>
+              </p>
+            )}
         </div>
       </div>
     </div>

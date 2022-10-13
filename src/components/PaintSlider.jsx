@@ -3,14 +3,18 @@ import Slider from "react-touch-drag-slider";
 import { URL } from "../variable";
 import Text from "../shared/components/Text";
 import { authContext } from "../shared/hooks/Auth";
+import { useHttpClient } from "../shared/hooks/http-hook";
+
 import PaintingUpdate from "./PaintingUpdate";
 
 const PaintingSlider = (props) => {
-  const { list, startIndex, cancelImage, displayListUpdate } = props;
+  const { list, startIndex, cancelImage, displayListUpdate,displayListdelete } = props;
   const [index, setIndex] = useState(startIndex);
   const { authState } = useContext(authContext);
   const [isUpdate, setIsUpdate] = useState(false);
   const [paintingUpdate, setPaintingUpdate] = useState({});
+  const { sendRequest } = useHttpClient();
+
 
   const setFinishedIndex = (i) => {
     console.log("finished dragging on slide", i);
@@ -40,6 +44,31 @@ const PaintingSlider = (props) => {
     cancelImage();
   };
 
+  const paintingDelete = async() => {
+    const password = prompt("please input the password!")
+    console.log(authState)
+    const deleteInfo = {
+      userid:authState.userInfo.user_id,
+      id:list[index]._id,
+      password:password,
+      token:authState.token
+    }
+    try {
+        const res = await sendRequest(
+          `${URL}api/paintings`,
+          "DELETE",
+          JSON.stringify(deleteInfo),
+          { "Content-Type": "application/json" }
+        );
+        console.log(res);
+        displayListdelete(index)
+        exitEdit();
+      } catch (err) {
+        console.log(err);
+        alert(err)
+      }
+  }
+
   console.log("render", index);
   return (
     <div className="painting-slider">
@@ -55,8 +84,16 @@ const PaintingSlider = (props) => {
       )}
       <div className="painting-slider__exit" onClick={cancelImage}></div>
       {authState.userInfo.user_id === list[0].user && (
-        <div className="painting-slider__edit" onClick={() => paintingEdit()}>
-          Edit
+        <div className="painting-slider__modify">
+          <div className="painting-slider__edit" onClick={() => paintingEdit()}>
+            Edit
+          </div>
+          <div
+            className="painting-slider__delete"
+            onClick={() => paintingDelete()}
+          >
+            delete
+          </div>
         </div>
       )}
       <button

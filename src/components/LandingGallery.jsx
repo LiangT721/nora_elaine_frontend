@@ -6,7 +6,7 @@ import nora from "../assets/imgs/nora_portait.png";
 import elaine from "../assets/imgs/elaine_portait.png";
 import SvgIcons from "../assets/svgs/symbol-defs.svg";
 import arrow from "../assets/imgs/arrow.png";
-import { intro, URL } from "../variable";
+import { userBackup, URL } from "../variable";
 
 import LandingSlider from "./LandingSlider";
 import LanguageToggle from "../shared/components/LanguageToggle";
@@ -18,37 +18,44 @@ const LandingGallery = () => {
   const { sendRequest } = useHttpClient();
   const [noralist, setNoraList] = useState([]);
   const [elainelist, setElaineList] = useState([]);
+  const [users, setUsers] = useState(userBackup);
   const link = ["Click me for more", "更多画作"];
   const fetchPaintingsList = useCallback(async () => {
     try {
       const res = await sendRequest(`${URL}api/paintings`, "GET");
-      setNoraList(res.lists.nora);
-      setElaineList(res.lists.elaine);
+      const userRes = await sendRequest(`${URL}api/users`, "GET");
+      console.log(userRes);
+      userRes.users.length > 0 && setUsers(userRes.users);
+      console.log(users);
+      res.lists.nora && setNoraList(res.lists.nora);
+      res.lists.elaine && setElaineList(res.lists.elaine);
     } catch (err) {
       console.log(err);
     }
-  }, [sendRequest, setNoraList, setElaineList]);
+  }, [sendRequest, setNoraList, setElaineList, setUsers]);
   useEffect(() => {
     fetchPaintingsList();
   }, [fetchPaintingsList]);
   return (
     <div className="landing-gallery">
-      <svg
-        className="landing-background landing-background-photo"
-        onClick={() => navigate("/temp")}
-      >
-        <use xlinkHref={`${SvgIcons}#icon-pictures`}></use>
-      </svg>
-      <LanguageToggle className="landing-gallery__toggle" />
       {
-        <LandingBackground />
+        // <svg
+        //   className="landing-background landing-background-photo"
+        //   onClick={() => navigate("/temp")}
+        // >
+        //   <use xlinkHref={`${SvgIcons}#icon-pictures`}></use>
+        // </svg>
       }
+      <LanguageToggle className="landing-gallery__toggle" />
+      {<LandingBackground />}
       <div className="landing-gallery__contents">
         <div className="landing-gallery__elaine">
           <div className="landing-gallery__elaine__intro">
-            <Text className="landing-gallery__elaine__title"
-              ChiStyle={"landing-gallery__title-chi"}>
-              {intro.elaine.name}
+            <Text
+              className="landing-gallery__elaine__title"
+              ChiStyle={"landing-gallery__title-chi"}
+            >
+              {users[1].name}
             </Text>
             <div className="landing-gallery__elaine__link">
               <Text className="landing-gallery__elaine__link-text">{link}</Text>
@@ -61,11 +68,13 @@ const LandingGallery = () => {
                 src={elaine}
                 className="landing-gallery__elaine__link-img"
                 alt="avater"
-                onClick={() => navigate(`/user/${elainelist[0].user}`)}
+                onClick={() =>
+                  navigate(`/user/${users[1].username}|${users[1]._id}`)
+                }
               />
             </div>
             <div className="landing-gallery__elaine__text">
-              <Text>{intro.elaine.intro}</Text>
+              <Text>{users[1].intro}</Text>
             </div>
           </div>
           <LandingSlider
@@ -83,7 +92,7 @@ const LandingGallery = () => {
             />
             <div className="landing-gallery__nora__intro">
               <div className="landing-gallery__nora__text">
-                <Text>{intro.nora.intro}</Text>
+                <Text>{users[0].intro}</Text>
               </div>
               <div className="landing-gallery__nora__link">
                 <Text className="landing-gallery__nora__link-text">{link}</Text>
@@ -96,12 +105,16 @@ const LandingGallery = () => {
                   src={nora}
                   className="landing-gallery__nora__link-img"
                   alt="avater"
-                  onClick={() => navigate(`/user/${noralist[0].user}`)}
+                  onClick={() =>
+                    navigate(`/user/${users[0].username}|${users[0]._id}`)
+                  }
                 />
               </div>
-              <Text className="landing-gallery__nora__title"
-              ChiStyle={"landing-gallery__title-chi"}>
-                {intro.nora.name}
+              <Text
+                className="landing-gallery__nora__title"
+                ChiStyle={"landing-gallery__title-chi"}
+              >
+                {users[0].name}
               </Text>
             </div>
           </div>

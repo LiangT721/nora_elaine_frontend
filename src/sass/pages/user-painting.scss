@@ -1,6 +1,6 @@
 .user-painting {
   min-height: 100vh;
-  padding: 5rem 0;
+  padding: 1rem 0 5rem;
   background: linear-gradient(
     180deg,
     $color-elaine-primary-dark 0%,
@@ -17,16 +17,51 @@
     );
   }
 
+  &__menu {
+    max-width: 1600px;
+    margin: 0 auto;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8rem;
+    @media only screen and (max-width: $bp-sm) {
+      padding: 0 1rem;
+    }
+  }
+
+  &__greeting{
+    font-size: 2.5rem;
+    font-weight: 600;
+    display: flex;
+    color: $color-text-light-2;
+  }
+  &__link {
+    align-self: end;
+    display: flex;
+    @media only screen and (max-width: $bp-sm) {
+      margin-right: 0;
+      display: block;
+    }
+    & > * {
+      display: inline-block;
+      text-transform: capitalize;
+      width: max-content;
+      &:hover {
+        transform: translateY(-2px);
+      }
+    }
+    & > *:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
   &__title {
     max-width: 1600px;
-    // background-color: #fff;
     margin: 0 auto;
     display: grid;
     align-items: baseline;
     line-height: 5rem;
     padding-left: 10rem;
-    // padding-right:20rem;
-    grid-template-columns: min-content 1fr min-content;
+    grid-template-columns: min-content 1fr;
     row-gap: 0;
     align-items: end;
     &__text {
@@ -49,26 +84,7 @@
       padding-right: 5rem;
     }
   }
-  &__link {
-    align-self: end;
-    display: flex;
-    margin-right: 20rem;
-    @media only screen and (max-width: $bp-sm) {
-      margin-right: 0;
-      display: block;
-    }
-    & > * {
-      display: inline-block;
-      text-transform: uppercase;
-      width: max-content;
-      &:hover{
-        transform: translateY(-2px);
-      }
-    }
-    & > *:not(:last-child) {
-      margin-right: 1rem;
-    }
-  }
+
 
   &__img {
     width: 8rem;

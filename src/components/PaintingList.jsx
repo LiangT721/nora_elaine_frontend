@@ -5,7 +5,7 @@ import PaintingSlider from "./PaintSlider";
 import { URL } from "../variable";
 
 const PaintingList = (props) => {
-  const { list, loading, hasMore, setSkipNum, isDefaultList,displayListUpdate } = props;
+  const { list, loading, hasMore, setSkipNum, isDefaultList,displayListUpdate,displayListdelete } = props;
   const [isSlider, setIsSlider] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
   const observer = useRef();
@@ -41,6 +41,7 @@ const PaintingList = (props) => {
               startIndex={startIndex}
               cancelImage={cancelImage}
               displayListUpdate={displayListUpdate}
+              displayListdelete={displayListdelete}
             />
         </PopUpGB>
       )}

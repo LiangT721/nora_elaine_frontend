@@ -46,7 +46,8 @@ const LandingGallery = () => {
       <div className="landing-gallery__contents">
         <div className="landing-gallery__elaine">
           <div className="landing-gallery__elaine__intro">
-            <Text className="landing-gallery__elaine__title">
+            <Text className="landing-gallery__elaine__title"
+              ChiStyle={"landing-gallery__title-chi"}>
               {intro.elaine.name}
             </Text>
             <div className="landing-gallery__elaine__link">
@@ -98,7 +99,8 @@ const LandingGallery = () => {
                   onClick={() => navigate(`/user/${noralist[0].user}`)}
                 />
               </div>
-              <Text className="landing-gallery__nora__title">
+              <Text className="landing-gallery__nora__title"
+              ChiStyle={"landing-gallery__title-chi"}>
                 {intro.nora.name}
               </Text>
             </div>

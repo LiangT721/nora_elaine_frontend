@@ -1,26 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Slider from "react-touch-drag-slider";
 import { URL } from "../variable";
 import Text from "../shared/components/Text";
+import { authContext } from "../shared/hooks/Auth";
+import PaintingUpdate from "./PaintingUpdate";
 
 const PaintingSlider = (props) => {
-  const { list, startIndex, cancelImage } = props;
+  const { list, startIndex, cancelImage, displayListUpdate } = props;
   const [index, setIndex] = useState(startIndex);
+  const { authState } = useContext(authContext);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [paintingUpdate, setPaintingUpdate] = useState({});
 
   const setFinishedIndex = (i) => {
     console.log("finished dragging on slide", i);
     setIndex(i);
   };
   const next = () => {
+    console.log(index);
     if (index < list.length - 1) setIndex(index + 1);
   };
 
   const previous = () => {
+    console.log(index);
     if (index > 0) setIndex(index - 1);
   };
+
+  const paintingEdit = () => {
+    const painting = list[index];
+    console.log(painting);
+    painting.token = authState.token;
+    setIsUpdate(true);
+    setPaintingUpdate(painting);
+  };
+
+  const exitEdit = () => {
+    setPaintingUpdate({});
+    setIsUpdate(false);
+    cancelImage();
+  };
+
+  console.log("render", index);
   return (
     <div className="painting-slider">
+      {isUpdate && (
+        <div className="update-bg">
+          <PaintingUpdate
+            index={index}
+            painting={paintingUpdate}
+            exitEdit={exitEdit}
+            displayListUpdate={displayListUpdate}
+          />
+        </div>
+      )}
       <div className="painting-slider__exit" onClick={cancelImage}></div>
+      {authState.userInfo.user_id === list[0].user && (
+        <div className="painting-slider__edit" onClick={() => paintingEdit()}>
+          Edit
+        </div>
+      )}
       <button
         className="painting-slider__button painting-slider__button-left"
         onClick={previous}
@@ -30,7 +68,7 @@ const PaintingSlider = (props) => {
       </button>
       <button
         className="painting-slider__button painting-slider__button-right"
-        onClick={next}   
+        onClick={next}
         disabled={index === list.length - 1}
       >
         〉
@@ -47,7 +85,6 @@ const PaintingSlider = (props) => {
         scaleOnDrag={true}
       >
         {list.map((el, index) => (
-          // <div className="painting-slider">
           <div className="painting-slider__container" key={el._id}>
             <img
               className="painting-slider__img"

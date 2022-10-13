@@ -5,9 +5,9 @@
     180deg,
     $color-elaine-primary-dark 0%,
     $color-elaine-primary-light-1 11.17%,
-    $color-elaine-primary 48.67%,
+    $color-elaine-primary 48.67%
   );
-  &__norabg{
+  &__norabg {
     background: linear-gradient(
       180deg,
       #44019b 0%,
@@ -17,7 +17,6 @@
     );
   }
 
-
   &__title {
     max-width: 1600px;
     // background-color: #fff;
@@ -25,8 +24,8 @@
     display: grid;
     align-items: baseline;
     line-height: 5rem;
-    padding-left:10rem;
-    padding-right:20rem;
+    padding-left: 10rem;
+    // padding-right:20rem;
     grid-template-columns: min-content 1fr min-content;
     row-gap: 0;
     align-items: end;
@@ -34,38 +33,55 @@
       font-size: 7rem;
       font-family: $font-display;
       color: $color-text-light-2;
-    }
-
-    @media only screen and ( max-width:$bp-sm ) {
-      line-height: 3rem;      
-      padding-left: 5rem;
-      &__text{
-        font-size: 5rem;
+      &-chi {
+        font-family: $font-Chi;
+        font-size: 4rem;
+        margin-bottom: 5px;
       }
     }
 
+    @media only screen and (max-width: $bp-sm) {
+      line-height: 3rem;
+      padding-left: 5rem;
+      &__text {
+        font-size: 5rem;
+      }
+      padding-right: 12rem;
+    }
   }
-  &__link{
+  &__link {
     align-self: end;
-    
+    display: flex;
+    margin-right: 20rem;
+    & > * {
+      display: inline-block;
+      text-transform: uppercase;
+      width: max-content;
+      &:hover{
+        transform: translateY(-2px);
+      }
+    }
+    & > *:not(:last-child) {
+      margin-right: 1rem;
+    }
   }
 
   &__img {
     width: 8rem;
     transform: rotateY(180deg);
     margin-right: 3rem;
-    @media only screen and ( max-width:$bp-sm ) {
-    width: 6rem;
-    margin-right: 1rem;
+    @media only screen and (max-width: $bp-sm) {
+      width: 6rem;
+      margin-right: 1rem;
     }
   }
 
-  &__loading{
+  &__loading {
     width: 100%;
     display: grid;
     justify-content: center;
 
-    &-text{
+    &-text {
       padding: 1rem;
       font-size: 2rem;
       color: $color-elaine-primary-light-1;
@@ -73,5 +89,3 @@
     }
   }
 }
-
-

@@ -43,6 +43,10 @@
 .sign-up__btn{
   margin-top: 2rem;
   display:inline-block;
+  text-transform: capitalize;
+  &:not(:last-child){
+    margin-right: 2rem;
+  }
 }
 
 .bottom__btns{

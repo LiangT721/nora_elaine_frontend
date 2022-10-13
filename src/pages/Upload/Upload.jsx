@@ -73,14 +73,14 @@ const Upload = () => {
   const { sendRequest } = useHttpClient();
 
   const paintingUploadSubmitHandler = async (event) => {
-    console.log(authState.token);
-    console.log(formState);
+    // console.log(authState.token);
+    // console.log(formState);
     if (formState.isValid) {
       event.preventDefault();
-      console.log("a")
+      // console.log("a")
       // console.log(formState.inputs);
       setIsupload(true)
-      console.log("b")
+      // console.log("b")
       try {
         const formData = new FormData();
         formData.append("id", formState.inputs.id.value);
@@ -93,13 +93,9 @@ const Upload = () => {
         formData.append("image", formState.inputs.image.value);
         formData.append("imagePreview", formState.inputs.imagePreview.value);
         formData.append("token", authState.token);
-        console.log('c')
         await sendRequest(`${URL}api/paintings`, "POST", formData);
-        console.log('d')
         reset();
-        console.log('e')
         setIsupload(false)
-        console.log('f')
         navigate("/");
       } catch (error) {
         console.log(error);

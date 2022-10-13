@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
 import { URL } from "../../variable";
@@ -11,8 +11,6 @@ import Text from "../../shared/components/Text";
 
 const UserPainting = () => {
   const { uid } = useParams();
-  const navigate = useNavigate()
-  const [isNora, setIsNora] = useState(uid === "633b4db76dbef6d81ddaa05e");
   const { sendRequest } = useHttpClient();
   const [skipNum, setSkipNum] = useState(0);
   const [defaultList, setDefaultList] = useState([]);
@@ -21,8 +19,7 @@ const UserPainting = () => {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  // const onLoading = useOnScreen(ref);
-  console.log(isNora);
+  const isNora = uid === "633b4db76dbef6d81ddaa05e";
 
   useEffect(() => {
     setLoading(true);
@@ -51,12 +48,23 @@ const UserPainting = () => {
     setDisplayList(defaultList);
     setIsDefaultList(true);
   };
+
+  const displayListUpdate = (index,painting) => {
+    console.log(displayList[index])
+    const list = displayList;
+    list[index] = painting;
+    console.log(list[index])
+    setDisplayList(list);
+  }
   return (
     <div className={`user-painting ${isNora && "user-painting__norabg"}`}>
       <div className="user-painting__title" onClick={resetDisplay}>
         {isNora && <img className="user-painting__img" src={Nora} alt="icon" />}
         {isNora && (
-          <Text className="user-painting__title__text">
+          <Text
+            className="user-painting__title__text"
+            ChiStyle={"user-painting__title__text-chi"}
+          >
             {["Nora", "汤一诺"]}
           </Text>
         )}
@@ -64,14 +72,22 @@ const UserPainting = () => {
           <img className="user-painting__img" src={Elaine} alt="icon" />
         )}
         {!isNora && (
-          <Text className="user-painting__title__text">
+          <Text
+            className="user-painting__title__text"
+            ChiStyle={"user-painting__title__text-chi"}
+          >
             {["Elaine", "汤一冉"]}
           </Text>
         )}
         <div className="user-painting__link">
-          <a className="page-link user-painting__link-home"
-            onClick={()=>navigate('/')}
-          > <u>home</u></a>
+          <Link to="/" className="page-link user-painting__link-home">
+            <Text>{["Home", "主页"]}</Text>
+          </Link>
+          <Link to="/userinfo" className="page-link user-painting__link-home">
+            <Text className="page-link user-painting__link-home">
+              {["login", "登录"]}
+            </Text>
+          </Link>
         </div>
       </div>
       <SearchingPart
@@ -85,6 +101,7 @@ const UserPainting = () => {
         hasMore={hasMore}
         setSkipNum={setSkipNum}
         isDefaultList={isDefaultList}
+        displayListUpdate={displayListUpdate}
       />
       <div className="user-painting__loading">
         {loading ? (

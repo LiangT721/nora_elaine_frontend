@@ -14,11 +14,13 @@ const Text = (props) => {
 
   return (
     <div className={`text ${props.className}`} style={props.style}>
-      {typeof displayContent === "string"
-        ? displayContent
-        : eng
-        ? displayContent[0]
-        : displayContent[1]}
+      {typeof displayContent === "string" ? (
+        displayContent
+      ) : eng ? (
+        displayContent[0]
+      ) : (
+        <span className={props.ChiStyle}>{displayContent[1]}</span>
+      )}
     </div>
   );
 };

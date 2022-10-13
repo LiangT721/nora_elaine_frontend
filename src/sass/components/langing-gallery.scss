@@ -80,7 +80,7 @@
       grid-template-columns: 2fr 1fr;
       grid-template-rows: 1fr 2fr;
       align-items: center;
-      padding-left: 10rem;
+      padding-left: 8rem;
       justify-items: center;
     }
     &__title {
@@ -97,6 +97,7 @@
       cursor: pointer;
       grid-column: 2 / 3;
       grid-row: 1 / 3;
+      margin-right: 3rem;
       & > * {
         position: absolute;
       }
@@ -111,9 +112,10 @@
         left: 10%;
       }
       &-img {
-        width: 100%;
+        width: 80%;
         animation: scale 1.5s infinite;
         bottom: 0;
+        right: 0
       }
     }
     &__text {
@@ -140,6 +142,8 @@
         padding-left: 5rem;
       }
       &__slider {
+        width: 34vw;
+        margin-left: 8%;
         margin-bottom: 10vh;
       }
 
@@ -165,7 +169,6 @@
     &__link{
       width: 11rem;
       
-      
     }
     }
     @media only screen and (max-width: $bp-lg) {
@@ -186,7 +189,7 @@
         transform: rotateZ(-2deg);
       }
       &__slider {
-        height: 30vh;
+        height: 28vh;
         margin-top: 6vh ;
       }
     }
@@ -202,8 +205,12 @@
       &__slider {
         width: 90vw;
         margin-left: 5vw;
-        height: 40vh;
+        margin-top: 2vh;
+        height: 33vh;
         transform: rotateZ(0deg);
+      }
+      &__title{
+        margin-bottom: 5vh;
       }
   
       &__text {
@@ -226,10 +233,10 @@
     grid-template-rows: 1fr 1fr;
     &__slider {
       margin-top: 8vh;
-      margin-left: 10%;
+      margin-left: 13%;
       transform: rotateZ(5deg);
-      width: 40vw;
-      height: 38vh;
+      width: 35vw;
+      height: 35vh;
       z-index: 5;
       max-width: 640px;
     }
@@ -312,12 +319,21 @@
     }
     @media only screen and (max-width: $bp-xl) {
      &__slider{
-      height: 35vh;
+      margin-top: 6vh;
+      height: 32vh;
       width: 40vw;
+     }
+     &__intro{
+      grid-template-columns: 1fr 1fr;
      }
       &__text{
         font-size: 1.5rem;
-        width: 80%;
+        grid-row: 1 / -1;
+      }
+      &__link{
+        align-self: end;
+        width: 20rem;
+        justify-self:end ;
       }
     }
     @media only screen and (max-width: $bp-lg) {
@@ -327,9 +343,9 @@
       max-width: 100%;
       // align-items: end;
       &__slider {
-        margin-top: 12vh;
+        margin-top: 14vh;
         transform: rotateZ(-2deg);
-        height: 30vh;
+        height: 28vh;
       }
     }
     @media only screen and (max-width: $bp-sm) {
@@ -337,10 +353,10 @@
       grid-template-columns: 1fr;
       &__slider {
         width: 90vw;
-        height: 40vh;
+        height: 38vh;
         margin-left: 5vw;
         transform: rotateZ(0deg);
-        margin-top: 12vh;
+        margin-top: 15vh;
 
       }
       &__intro{
@@ -352,7 +368,11 @@
   &__toggle {
     position: absolute;
     z-index: 200;
-    & > button {
-    }
+   
+  }
+
+  &__title-chi{
+    // font-size: 5rem;
+    font-family: $font-Chi;
   }
 }

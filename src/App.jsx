@@ -32,7 +32,7 @@ function App() {
           { "Content-Type": "application/json" }
         );
         if (res.loginInfo) {
-          console.log(res.loginInfo)
+          // console.log(res.loginInfo)
           dispatch({
             type: "LOGIN",
             value: {

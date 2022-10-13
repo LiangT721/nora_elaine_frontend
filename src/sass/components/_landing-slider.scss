@@ -1,11 +1,23 @@
 .landing-slider {
   position: relative;
-  &__container{
-    width: inherit;
+  // background-color: rgba(255, 255, 255, 0.478);
+  &__container {
+    width: 100%;
+    height: inherit;
+    position: relative;
+    overflow: hidden;
   }
   &__item {
-    width: inherit;
+    position: absolute;
+    width: 100%;
     height: inherit;
+    z-index: 0;
+    // transition: all 0.5s linear;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
   }
   &__img {
     width: inherit;
@@ -27,12 +39,10 @@
     &-left {
       left: 0.5rem;
       animation: shake 0.8s infinite 0.5s;
-
     }
     &-right {
       right: 0.5rem;
       animation: shake 0.8s infinite;
-
     }
     &__icon {
       width: 5rem;
@@ -62,5 +72,27 @@
       fill: $color-nora-primary-light-1;
     }
   }
+}
+
+.curSlider,
+.nextSlider,
+.preSlider {
+  display: grid;
+  visibility: visible;
+  transition: all 0.5s linear;
+}
+.preSlider {
+  z-index: 3;
+  transform: translateX(-100%);
+}
+.nextSlider {
+  z-index: 5;
+  transform: translateX(100%);
+}
+.curSlider {
+  z-index: 5;
+  transform: translateX(0);
+  opacity: 1;
+  // border: 1px solid black;
 
 }

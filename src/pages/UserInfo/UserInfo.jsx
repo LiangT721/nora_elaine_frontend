@@ -111,11 +111,16 @@ const UserInfo = () => {
           <Link to="/" className="button">
             home
           </Link>
+          <div>
           <div
-            className="page-link sign-up__btn"
-            onClick={() => setIsLogin(false)}
+          className="page-link sign-up__btn"
+          onClick={() => setIsLogin(false)}
           >
-            &#10141; <u>Sign up</u>
+          &#10141; <u>Sign up</u>
+          </div>
+          <Link to="/upload" className="page-link sign-up__btn">
+          &#10141; <u>upload</u>
+          </Link>
           </div>
         </div>
       </div>

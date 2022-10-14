@@ -1,34 +1,7 @@
 .painting-slider {
-  // border: 1px solid white;
   width: 100vw;
   height: 100vh;
-  // margin-bottom: 10vh;
-  &__container {
-    display: grid;
-    grid-template-columns: max-content max-content;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 100vw;
-    height: 100vh;
-
-    @media only screen and (max-width: $bp-xxxl) {
-      grid-template-columns: 1fr max-content;
-      max-height: 100vh;
-      justify-items: center;
-    }
-    @media only screen and (max-width: $bp-md) {
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr min-content;
-      justify-content: center;
-    }
-    @media only screen and (max-width: $bp-sm) {
-      align-self: start;
-      margin-top: 3.5rem;
-      height: 80vh;
-    }
-  }
-
+  position: relative;
   &__modify {
     position: absolute;
     padding: 0.5rem 1rem;
@@ -102,20 +75,48 @@
       transform: rotateZ(-45deg);
     }
   }
+
+ 
+  &__container {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100vw;
+    height: 100vh;
+
+    @media only screen and (max-width: $bp-xxxl) {
+      grid-template-columns: 1fr max-content;
+      max-height: 100vh;
+      justify-items: center;
+    }
+    @media only screen and (max-width: $bp-md) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 80% 20%;
+      height: 95vh;
+    }
+    @media only screen and (max-width: $bp-sm) {
+      align-self: start;
+      margin-top: 3.5rem;
+      height: 80vh;
+      overflow: hidden;
+    }
+  }
+
+
   &__img {
     height: inherit;
     width: 100%;
     object-fit: contain;
-    @media only screen and (max-width: $bp-xxxl) {
+    img{
+      height: 100%;
     }
     @media only screen and (max-width: $bp-md) {
-      height: auto;
-      align-items: end;
-      max-height: 85vh;
+      height: 100%;
+      width: 100%;
     }
-    @media only screen and (max-width: $bp-sm) {
-      max-height: 70vh;
-    }
+
   }
   &__info {
     padding: 5rem 2rem;
@@ -131,13 +132,16 @@
     }
     @media only screen and (max-width: $bp-sm) {
       padding-top: 2rem;
-      max-height: 70vh;
+      max-height: 10vh;
     }
   }
   &__title {
     font-size: 1.6rem;
     font-weight: 700;
     text-transform: uppercase;
+    @media only screen and (max-width: $bp-sm) {
+      font-size: 1.4rem;
+    }
   }
   &__content {
     max-width: 15rem;
@@ -149,6 +153,10 @@
     display: block;
     @media only screen and (max-width: $bp-md) {
       width: 100%;
+    }
+    @media only screen and (max-width: $bp-sm) {
+      margin-bottom: 2rem;
+      font-size: 1.3rem;
     }
   }
   &__name {

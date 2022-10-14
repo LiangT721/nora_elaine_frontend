@@ -31,7 +31,6 @@ const PaintingList = (props) => {
     setStartIndex(0);
     setIsSlider(false);
   };
-
   return (
     <div className="painting-list">
       {isSlider && (

@@ -137,7 +137,7 @@ const UserPainting = () => {
         setDisplayList={setDisplayList}
         setIsDefaultList={setIsDefaultList}
       />
-      <PaintingList
+      {displayList && <PaintingList
         list={displayList}
         loading={loading}
         hasMore={hasMore}
@@ -145,7 +145,7 @@ const UserPainting = () => {
         isDefaultList={isDefaultList}
         displayListUpdate={displayListUpdate}
         displayListdelete={displayListdelete}
-      />
+      />}
       <div className="user-painting__loading">
         {loading ? (
           <div className="lds-ripple">

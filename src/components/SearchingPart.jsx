@@ -7,7 +7,8 @@ import { useHttpClient } from "../shared/hooks/http-hook";
 import { languageContext } from "../shared/hooks/useLanguage";
 
 const SearchingPart = (props) => {
-  const { uid } = useParams();
+  const { user } = useParams();
+  const uid = user.split("|")[1];
   const { sendRequest } = useHttpClient();
   const { lanState } = useContext(languageContext);
   const [keyWords, setKeyWords] = useState([]);
@@ -41,8 +42,8 @@ const SearchingPart = (props) => {
         `${URL}api/paintings/category/${uid}^${content}`,
         "GET"
       );
-
       console.clear();
+      console.log(res)
       setDisplayList(res.paintingList);
       setIsDefaultList(false);
     } catch (err) {

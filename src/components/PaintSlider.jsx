@@ -8,13 +8,18 @@ import { useHttpClient } from "../shared/hooks/http-hook";
 import PaintingUpdate from "./PaintingUpdate";
 
 const PaintingSlider = (props) => {
-  const { list, startIndex, cancelImage, displayListUpdate,displayListdelete } = props;
+  const {
+    list,
+    startIndex,
+    cancelImage,
+    displayListUpdate,
+    displayListdelete
+  } = props;
   const [index, setIndex] = useState(startIndex);
   const { authState } = useContext(authContext);
   const [isUpdate, setIsUpdate] = useState(false);
   const [paintingUpdate, setPaintingUpdate] = useState({});
   const { sendRequest } = useHttpClient();
-
 
   const setFinishedIndex = (i) => {
     console.log("finished dragging on slide", i);
@@ -44,32 +49,31 @@ const PaintingSlider = (props) => {
     cancelImage();
   };
 
-  const paintingDelete = async() => {
-    const password = prompt("please input the password!")
-    console.log(authState)
+  const paintingDelete = async () => {
+    const password = prompt("please input the password!");
+    console.log(authState);
     const deleteInfo = {
-      userid:authState.userInfo.user_id,
-      id:list[index]._id,
-      password:password,
-      token:authState.token
-    }
+      userid: authState.userInfo.user_id,
+      id: list[index]._id,
+      password: password,
+      token: authState.token
+    };
     try {
-        const res = await sendRequest(
-          `${URL}api/paintings`,
-          "DELETE",
-          JSON.stringify(deleteInfo),
-          { "Content-Type": "application/json" }
-        );
-        console.log(res);
-        displayListdelete(index)
-        exitEdit();
-      } catch (err) {
-        console.log(err);
-        alert(err)
-      }
-  }
+      const res = await sendRequest(
+        `${URL}api/paintings`,
+        "DELETE",
+        JSON.stringify(deleteInfo),
+        { "Content-Type": "application/json" }
+      );
+      console.log(res);
+      displayListdelete(index);
+      exitEdit();
+    } catch (err) {
+      console.log(err);
+      alert(err);
+    }
+  };
 
-  console.log("render", index);
   return (
     <div className="painting-slider">
       {isUpdate && (
@@ -111,7 +115,7 @@ const PaintingSlider = (props) => {
         〉
       </button>
       <Slider
-        className="painting-slider"
+        className="painting-slider__div"
         onSlideComplete={setFinishedIndex}
         onSlideStart={(index) => {
           console.log("started dragging on slide", index);
@@ -123,11 +127,13 @@ const PaintingSlider = (props) => {
       >
         {list.map((el, index) => (
           <div className="painting-slider__container" key={el._id}>
-            <img
-              className="painting-slider__img"
-              src={`${URL}api/${el.image}`}
-              alt=""
-            />
+            <div className="painting-slider__img">
+              <img
+                className="painting-slider__img"
+                src={`${URL}api/${el.image}`}
+                alt=""
+              />
+            </div>
             <div className="painting-slider__info">
               <div className="painting-slider__name">
                 <Text className="painting-slider__title">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useCallback } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useCookies } from "react-cookie";
@@ -26,28 +26,24 @@ const UserPainting = () => {
   const uid = user.split("|")[1];
   const isNora = user.split("|")[0] === "nora";
 
-  useEffect(() => {
-    setLoading(true);
-    const fetchData = async () => {
-      try {
-        const res = await sendRequest(
-          `${URL}api/paintings/${uid}^${skipNum}`,
-          "GET"
-        );
-        setDisplayList((preDisplayList) => {
-          return [...preDisplayList, ...res.paintingList];
-        });
-        setDefaultList((preDefaultList) => {
-          return [...preDefaultList, ...res.paintingList];
-        });
-        setLoading(false);
-        setHasMore(res.paintingList.length > 0);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, [skipNum, uid, sendRequest]);
+  const fetchData = useCallback(async (skipNum) => {
+    try {
+      const res = await sendRequest(
+        `${URL}api/paintings/${uid}^${skipNum}`,
+        "GET"
+      );
+      setDisplayList((preDisplayList) => {
+        return [...preDisplayList, ...res.paintingList];
+      });
+      setDefaultList((preDefaultList) => {
+        return [...preDefaultList, ...res.paintingList];
+      });
+      setLoading(false);
+      setHasMore(res.paintingList.length > 0);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [sendRequest, uid]);
 
   const resetDisplay = () => {
     setDisplayList(defaultList);
@@ -74,6 +70,10 @@ const UserPainting = () => {
     navigate("/userinfo");
   };
 
+  useEffect(() => {
+    setLoading(true);
+    fetchData(skipNum);
+  }, [skipNum, fetchData]);
   return (
     <div className={`user-painting ${isNora && "user-painting__norabg"}`}>
       <div className="user-painting__menu">
@@ -81,8 +81,10 @@ const UserPainting = () => {
           <div className="user-painting__greeting">
             Hi &nbsp;
             <Text>{authState.userInfo.user}</Text>,
-          </div> 
-        ): <div></div>}
+          </div>
+        ) : (
+          <div></div>
+        )}
         <div className="user-painting__link">
           <Link to="/" className="page-link user-painting__link-button">
             <Text textStyle={"underline"}>{["Home", "主页"]}</Text>
@@ -137,15 +139,17 @@ const UserPainting = () => {
         setDisplayList={setDisplayList}
         setIsDefaultList={setIsDefaultList}
       />
-      {displayList && <PaintingList
-        list={displayList}
-        loading={loading}
-        hasMore={hasMore}
-        setSkipNum={setSkipNum}
-        isDefaultList={isDefaultList}
-        displayListUpdate={displayListUpdate}
-        displayListdelete={displayListdelete}
-      />}
+      {displayList.length > 0 && (
+        <PaintingList
+          list={displayList}
+          loading={loading}
+          hasMore={hasMore}
+          setSkipNum={setSkipNum}
+          isDefaultList={isDefaultList}
+          displayListUpdate={displayListUpdate}
+          displayListdelete={displayListdelete}
+        />
+      )}
       <div className="user-painting__loading">
         {loading ? (
           <div className="lds-ripple">

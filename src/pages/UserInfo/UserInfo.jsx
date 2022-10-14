@@ -67,7 +67,7 @@ const UserInfo = () => {
         navigate("/upload");
       } catch (error) {
         console.log(error);
-        alert(error)
+        alert(error);
       }
     } else {
       setInvalidAlarm(true);
@@ -92,10 +92,9 @@ const UserInfo = () => {
       <div className="user-info__container">
         <div className="user-info__top">
           {authState.isLogin && (
-            <div  className="user-info__greeting">Hi &nbsp;
-              <Text>
-                {authState.userInfo.user}
-              </Text>,
+            <div className="user-info__greeting">
+              Hi &nbsp;
+              <Text>{authState.userInfo.user}</Text>,
             </div>
           )}
           <LanguageToggle className="user-info__language-toggle" />
@@ -128,22 +127,24 @@ const UserInfo = () => {
           <Link to="/" className="button">
             home
           </Link>
-            <div
-              className="page-link sign-up__btn"
-              onClick={() => setIsLogin(false)}
-            >
-              &#10141; <u>Sign up</u>
-            </div>
-            {authState.isLogin && (
-              <Link to="/upload" className="page-link sign-up__btn">
-                &#10141; <u>upload</u>
-              </Link>
-            )}
-            {authState.isLogin && (
-              <p className="page-link sign-up__btn" onClick={logout}>
-                &#10141; <u>logout</u>
-              </p>
-            )}
+          {
+            // <div
+            //   className="page-link sign-up__btn"
+            //   onClick={() => setIsLogin(false)}
+            // >
+            //   &#10141; <u>Sign up</u>
+            // </div>
+          }
+          {authState.isLogin && (
+            <Link to="/upload" className="page-link sign-up__btn">
+              &#10141; <u>upload</u>
+            </Link>
+          )}
+          {authState.isLogin && (
+            <p className="page-link sign-up__btn" onClick={logout}>
+              &#10141; <u>logout</u>
+            </p>
+          )}
         </div>
       </div>
     </div>

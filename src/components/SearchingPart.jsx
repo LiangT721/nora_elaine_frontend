@@ -13,6 +13,7 @@ const SearchingPart = (props) => {
   const { lanState } = useContext(languageContext);
   const [keyWords, setKeyWords] = useState([]);
   const [condition, setCondition] = useState("");
+  const [searchContent, setSearchContent] = useState("")
 
   const { setDisplayList, setIsDefaultList, isNora } = props;
   const eng = lanState.lan;
@@ -36,14 +37,13 @@ const SearchingPart = (props) => {
   };
 
   const categorySearch = async (el) => {
+    setSearchContent(el)
     const content = el.replaceAll(" ", "%20");
     try {
       const res = await sendRequest(
         `${URL}api/paintings/category/${uid}^${content}`,
         "GET"
       );
-      console.clear();
-      console.log(res)
       setDisplayList(res.paintingList);
       setIsDefaultList(false);
     } catch (err) {
@@ -55,7 +55,7 @@ const SearchingPart = (props) => {
     const fetchData = async () => {
       try {
         const KeyWordres = await sendRequest(
-          `${URL}api/paintings/keyword`,
+          `${URL}api/paintings/keyword/${uid}`,
           "GET"
         );
         setKeyWords(KeyWordres.keywordList.slice(0, 8));
@@ -64,7 +64,7 @@ const SearchingPart = (props) => {
       }
     };
     fetchData();
-  }, [sendRequest]);
+  }, [sendRequest, uid]);
 
   return (
     <div className="painting-searching-part">
@@ -82,7 +82,7 @@ const SearchingPart = (props) => {
       <div className="painting__categorys">
         {category.map((el) => (
           <div
-            className={`painting__category ${isNora&&"painting__category__nora"}`}
+            className={`painting__category ${isNora&&"painting__category__nora"} ${el===searchContent&&!isNora&& "painting__category__selected"} ${el===searchContent&&isNora&& "painting__category__nora__selected"}`}
             key={el}
             onClick={() => categorySearch(el)}
           >

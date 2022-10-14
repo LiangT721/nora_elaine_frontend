@@ -15,7 +15,6 @@ import UserPainting from "./pages/UserPainting/UserPainting";
 import "./sass/App.scss";
 
 function App() {
-  console.log("start render App")
   const { sendRequest } = useHttpClient();
   const [cookies, removeCookie] = useCookies(["token"]);
   const token = cookies.token;

@@ -89,10 +89,17 @@
     &:hover {
       color: $color-elaine-primary-dark;
       background-color: $color-elaine-primary-light-1;
-
-      
     }
     &__nora:hover{
+      background-color: $color-nora-primary-light-3;
+      color: $color-milk-white;
+    }
+
+    &__selected{
+      color: $color-elaine-primary-dark;
+      background-color: $color-elaine-primary-light-1;
+    }
+    &__nora__selected{
       background-color: $color-nora-primary-light-3;
       color: $color-milk-white;
     }

@@ -41,7 +41,7 @@ const UserPainting = () => {
       setLoading(false);
       setHasMore(res.paintingList.length > 0);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   }, [sendRequest, uid]);
 

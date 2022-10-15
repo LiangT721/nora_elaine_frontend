@@ -32,7 +32,7 @@ const SearchingPart = (props) => {
       setDisplayList(res.paintingList);
       setIsDefaultList(false);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 
@@ -47,7 +47,7 @@ const SearchingPart = (props) => {
       setDisplayList(res.paintingList);
       setIsDefaultList(false);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 
@@ -60,7 +60,7 @@ const SearchingPart = (props) => {
         );
         setKeyWords(KeyWordres.keywordList.slice(0, 8));
       } catch (err) {
-        console.log(err);
+        alert(err);
       }
     };
     fetchData();

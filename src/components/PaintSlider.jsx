@@ -4,7 +4,6 @@ import { URL } from "../variable";
 import Text from "../shared/components/Text";
 import { authContext } from "../shared/hooks/Auth";
 import { useHttpClient } from "../shared/hooks/http-hook";
-
 import PaintingUpdate from "./PaintingUpdate";
 
 const PaintingSlider = (props) => {
@@ -22,22 +21,18 @@ const PaintingSlider = (props) => {
   const { sendRequest } = useHttpClient();
 
   const setFinishedIndex = (i) => {
-    console.log("finished dragging on slide", i);
     setIndex(i);
   };
   const next = () => {
-    console.log(index);
     if (index < list.length - 1) setIndex(index + 1);
   };
 
   const previous = () => {
-    console.log(index);
     if (index > 0) setIndex(index - 1);
   };
 
   const paintingEdit = () => {
     const painting = list[index];
-    console.log(painting);
     painting.token = authState.token;
     setIsUpdate(true);
     setPaintingUpdate(painting);
@@ -51,7 +46,6 @@ const PaintingSlider = (props) => {
 
   const paintingDelete = async () => {
     const password = prompt("please input the password!");
-    console.log(authState);
     const deleteInfo = {
       userid: authState.userInfo.user_id,
       id: list[index]._id,
@@ -65,11 +59,9 @@ const PaintingSlider = (props) => {
         JSON.stringify(deleteInfo),
         { "Content-Type": "application/json" }
       );
-      console.log(res);
       displayListdelete(index);
       exitEdit();
     } catch (err) {
-      console.log(err);
       alert(err);
     }
   };
@@ -118,7 +110,6 @@ const PaintingSlider = (props) => {
         className="painting-slider__div"
         onSlideComplete={setFinishedIndex}
         onSlideStart={(index) => {
-          console.log("started dragging on slide", index);
         }}
         activeIndex={index}
         threshHold={100}

@@ -23,7 +23,6 @@ function App() {
   const checkLogin = useCallback(
     async (token) => {
       try {
-        console.log("check")
         const res = await sendRequest(
           `${URL}api/users/auth`,
           "POST",
@@ -31,7 +30,6 @@ function App() {
           { "Content-Type": "application/json" }
         );
         if (res.loginInfo) {
-          // console.log(res.loginInfo)
           dispatch({
             type: "LOGIN",
             value: {

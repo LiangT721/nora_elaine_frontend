@@ -24,7 +24,6 @@ const ImageUpload = (props) => {
     let file;
     if (e.target.files && e.target.files.length === 1) {
       file = e.target.files[0];
-      // console.log(file);
 
       setFile(file);
       setIsValid(true);
@@ -36,7 +35,6 @@ const ImageUpload = (props) => {
 
   const pickImageHandler = () => {
     filePickerRef.current.click();
-    // console.log("click");
   };
 
   return (

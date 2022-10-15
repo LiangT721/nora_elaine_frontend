@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import nora from "../assets/imgs/nora_portait.png";
 import elaine from "../assets/imgs/elaine_portait.png";
-import SvgIcons from "../assets/svgs/symbol-defs.svg";
 import arrow from "../assets/imgs/arrow.png";
 import { userBackup, URL } from "../variable";
 
@@ -20,34 +19,27 @@ const LandingGallery = () => {
   const [elainelist, setElaineList] = useState([]);
   const [users, setUsers] = useState(userBackup);
   const link = ["Click me for more", "更多画作"];
+
   const fetchPaintingsList = useCallback(async () => {
     try {
       const res = await sendRequest(`${URL}api/paintings`, "GET");
       const userRes = await sendRequest(`${URL}api/users`, "GET");
-      console.log(userRes);
       userRes.users.length > 0 && setUsers(userRes.users);
-      console.log(users);
       res.lists.nora && setNoraList(res.lists.nora);
       res.lists.elaine && setElaineList(res.lists.elaine);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   }, [sendRequest, setNoraList, setElaineList, setUsers]);
+
   useEffect(() => {
     fetchPaintingsList();
   }, [fetchPaintingsList]);
+  console.log(users)
   return (
     <div className="landing-gallery">
-      {
-        // <svg
-        //   className="landing-background landing-background-photo"
-        //   onClick={() => navigate("/temp")}
-        // >
-        //   <use xlinkHref={`${SvgIcons}#icon-pictures`}></use>
-        // </svg>
-      }
       <LanguageToggle className="landing-gallery__toggle" />
-      {<LandingBackground />}
+      <LandingBackground />
       <div className="landing-gallery__contents">
         <div className="landing-gallery__elaine">
           <div className="landing-gallery__elaine__intro">

@@ -19,7 +19,7 @@ const UserSignUp = (props) => {
   const [, setCookie] = useCookies(["token"]);
   const { sendRequest } = useHttpClient();
   const navigate = useNavigate();
-  const { authState, dispatch } = useContext(authContext);
+  const { dispatch } = useContext(authContext);
 
   const [formState, inputHandler] = useForm(
     {
@@ -54,12 +54,8 @@ const UserSignUp = (props) => {
   const { closePopUp } = props;
 
   const userSubmitHandler = async (event) => {
-    console.log("start submit");
-    console.log(formState);
-    console.log(formState.isValid);
     if (formState.isValid) {
       event.preventDefault();
-      console.log(formState.inputs);
       try {
         const formData = new FormData();
         formData.append("creator", formState.inputs.creator.value);
@@ -68,16 +64,11 @@ const UserSignUp = (props) => {
         formData.append("birth", formState.inputs.birth.value);
         formData.append("icon", formState.inputs.icon.value);
         formData.append("intro", formState.inputs.intro.value);
-        console.log("1");
-        for (let data of formData) {
-          console.log(data);
-        }
         const res = await sendRequest(
           `${URL}api/users/signup`,
           "POST",
           formData
         );
-        console.log(res.loginInfo);
         setCookie("token", res.loginInfo.token);
         dispatch({
           type: "LOGIN",
@@ -86,21 +77,17 @@ const UserSignUp = (props) => {
             userInfo: res.loginInfo
           }
         });
-        console.log(authState);
         navigate("/upload");
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     } else {
       setInvalidAlarm(true);
-      console.log("error");
     }
   };
 
   const imageUpload = async (file) => {
     const imagefile = await imageCompress(file, 0.5, 400, false);
-    console.log(imagefile);
-
     inputHandler("icon", imagefile, true);
   };
   

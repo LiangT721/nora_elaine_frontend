@@ -93,11 +93,10 @@ const Upload = () => {
         setIsupload(false);
         navigate("/");
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     } else {
       setInvalidAlarm(true);
-      console.log("error");
     }
   };
 

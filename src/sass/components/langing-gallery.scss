@@ -124,7 +124,8 @@
       font-weight: 500;
       transform: rotateZ(-2deg);
       align-self: start;
-      margin-top: 3rem;
+      margin-top: 5rem;
+      max-width: 35rem;
       color: $color-milk-white;
       text-shadow: $shadow-text-dark;
     }
@@ -215,6 +216,7 @@
   
       &__text {
         grid-column: 1 / 3;
+        margin-top: 3rem;
       }
       &__link {
         width: 12rem;

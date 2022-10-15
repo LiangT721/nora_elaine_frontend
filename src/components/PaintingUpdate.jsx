@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import { URL, category } from "../variable";
 import { useForm } from "../shared/hooks/useForm";
@@ -62,11 +62,10 @@ const PaintingUpdate = (props) => {
           JSON.stringify(data),
           { "Content-Type": "application/json" }
         );
-        console.log(res);
         displayListUpdate(index, res.painting);
         exitEdit();
       } catch (err) {
-        console.log(err);
+       alert(err);
       }
     }
   };

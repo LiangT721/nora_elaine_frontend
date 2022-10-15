@@ -21,7 +21,7 @@ export const useResizer = () => {
       });
       return file;
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
   return [imageCompress]

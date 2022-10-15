@@ -15,7 +15,6 @@ const PaintingList = (props) => {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore && isDefaultList) {
-          console.log(entries[0].value);
           setSkipNum((prevSkipNum) => prevSkipNum + 15);
         }
       });

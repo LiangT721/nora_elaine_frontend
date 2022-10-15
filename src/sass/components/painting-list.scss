@@ -22,13 +22,17 @@
     &:nth-last-child(1) {
       flex-grow: 0;
     }
+    @media only screen and (max-width: $bp-lg) {
+      &:nth-last-child(5),
+      &:nth-last-child(4),
+      &:nth-last-child(3) {
+        flex-grow: 1;
+      }
+    }
 
     @media only screen and (max-width: $bp-sm) {
       // &:nth-last-child(2),
       height: 17rem;
-      &:nth-last-child(5),
-      &:nth-last-child(4),
-      &:nth-last-child(3),
       &:nth-last-child(2),
       &:nth-last-child(1) {
         flex-grow: 1;

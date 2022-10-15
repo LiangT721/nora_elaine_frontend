@@ -26,7 +26,7 @@ const Temp = () => {
       };
       setUsers(userlist);
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   }, [sendRequest, setNoraList, setElaineList]);
   useEffect(() => {

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import Slider from "react-touch-drag-slider";
-import { URL } from "../variable";
+import { URL } from "../url";
+import { ImageURL } from "../variable";
 import Text from "../shared/components/Text";
 import { authContext } from "../shared/hooks/Auth";
 import { useHttpClient } from "../shared/hooks/http-hook";
@@ -121,7 +122,7 @@ const PaintingSlider = (props) => {
             <div className="painting-slider__img">
               <img
                 className="painting-slider__img"
-                src={`${URL}api/${el.image}`}
+                src={`${ImageURL}api/${el.image}`}
                 alt=""
               />
             </div>

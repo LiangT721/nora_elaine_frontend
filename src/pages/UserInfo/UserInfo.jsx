@@ -6,7 +6,7 @@ import { useForm } from "../../shared/hooks/useForm";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useCookies } from "react-cookie";
 import { authContext } from "../../shared/hooks/Auth";
-import { URL } from "../../variable";
+import { URL } from "../../url";
 
 import Button from "../../shared/components/Button";
 import Input from "../../shared/components/Input";

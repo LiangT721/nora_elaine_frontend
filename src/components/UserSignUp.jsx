@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { URL } from "../variable";
+import { URL } from "../url";
 import { VALIDATOR_REQUIRE } from "../shared/util/validators";
 import { useForm } from "../shared/hooks/useForm";
 import { useHttpClient } from "../shared/hooks/http-hook";

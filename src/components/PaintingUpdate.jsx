@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 
-import { URL, category } from "../variable";
+import { category } from "../variable";
+import { URL } from "../url";
 import { useForm } from "../shared/hooks/useForm";
 import { useHttpClient } from "../shared/hooks/http-hook";
 import { authContext } from "../shared/hooks/Auth";

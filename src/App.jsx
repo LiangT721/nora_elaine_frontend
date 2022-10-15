@@ -4,7 +4,7 @@ import { LanguageProvider } from "./shared/hooks/useLanguage";
 import { useHttpClient } from "./shared/hooks/http-hook";
 import { useCookies } from "react-cookie";
 import { authContext } from "./shared/hooks/Auth";
-import { URL } from "./variable";
+import { URL } from "./url";
 
 import Home from "./pages/Home/Home";
 import Upload from "./pages/Upload/Upload";

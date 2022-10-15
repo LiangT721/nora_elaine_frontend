@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { URL } from "../variable";
+import { ImageURL } from "../variable";
 import SvgIcons from "../assets/svgs/symbol-defs.svg";
 
 const LandingSlider = (props) => {
@@ -97,7 +97,7 @@ const LandingSlider = (props) => {
             >
               <img
                 className={`landing-slider__img ${props.creator}`}
-                src={`${URL}api/${el.imagePreview}`}
+                src={`${ImageURL}api/${el.imagePreview}`}
                 alt=""
               />
             </div>

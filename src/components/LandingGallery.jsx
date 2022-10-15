@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import nora from "../assets/imgs/nora_portait.png";
 import elaine from "../assets/imgs/elaine_portait.png";
 import arrow from "../assets/imgs/arrow.png";
-import { userBackup, URL } from "../variable";
+import { userBackup } from "../variable";
+import { URL } from "../url";
 
 import LandingSlider from "./LandingSlider";
 import LanguageToggle from "../shared/components/LanguageToggle";

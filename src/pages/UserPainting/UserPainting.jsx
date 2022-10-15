@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useCookies } from "react-cookie";
 
-import { URL } from "../../variable";
+import { URL } from "../../url";
 import { authContext } from "../../shared/hooks/Auth";
 import Nora from "../../assets/imgs/nora_portait.png";
 import Elaine from "../../assets/imgs/elaine_portait.png";
@@ -135,10 +135,14 @@ const UserPainting = () => {
         )}
       </div>
       <SearchingPart
+        className="user-painting__searching"
         isNora={isNora}
         setDisplayList={setDisplayList}
         setIsDefaultList={setIsDefaultList}
       />
+      {!isDefaultList && (<div className="user-painting__reset" onClick={resetDisplay}>
+      <span>&#10149; </span><Text>{['All paintings','所有作品']}</Text>
+      </div>)}
       {displayList.length > 0 && (
         <PaintingList
           list={displayList}

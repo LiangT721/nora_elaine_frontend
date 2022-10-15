@@ -96,6 +96,22 @@
     }
   }
 
+  &__reset{
+    max-width: 1600px;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    padding: 0 2rem;
+    color: $color-text-light-2;
+    text-shadow: $shadow-text-dark;
+    justify-content: right;
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    &>span{
+      margin-right: 1rem;
+    }
+  }
+
   &__loading {
     width: 100%;
     display: grid;
@@ -107,5 +123,10 @@
       color: $color-elaine-primary-light-1;
       text-shadow: $shadow-text-dark;
     }
+  }
+
+  &__searching{
+    position: sticky;
+    top: 0;
   }
 }

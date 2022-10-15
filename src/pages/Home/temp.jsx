@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState} from "react";
 
 import { Link } from "react-router-dom";
 
-import { URL } from "../../variable";
+import { URL } from "../../url";
+import { ImageURL } from "../../variable";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 
 import Text from "../../shared/components/Text";
@@ -53,7 +54,7 @@ const Temp = () => {
             <Text>{["Nora", "汤一诺"]}</Text>
             {users.nora && (
               <div className="temp__nora__gallery__icon">
-                <img src={`${URL}api/${users.nora.icon}`} alt="" />
+                <img src={`${ImageURL}api/${users.nora.icon}`} alt="" />
               </div>
             )}
           </div>
@@ -62,7 +63,7 @@ const Temp = () => {
             noralist.map((el) => (
               <div className="temp__nora__gallery__item" key={el._id}>
                 <div className="temp__nora__gallery__image">
-                  <img src={`${URL}api/${el.imagePreview}`} alt="" />
+                  <img src={`${ImageURL}api/${el.imagePreview}`} alt="" />
                 </div>
                 <Text className="temp__nora__gallery__name">{el.name}</Text>
                 <div className="temp__nora__gallery__info">
@@ -78,7 +79,7 @@ const Temp = () => {
             <Text>{["Elaine", "汤一冉"]}</Text>
             {users.elaine && (
               <div className="temp__elaine__gallery__icon">
-                <img src={`${URL}api/${users.elaine.icon}`} alt="" />
+                <img src={`${ImageURL}api/${users.elaine.icon}`} alt="" />
               </div>
             )}
           </div>
@@ -87,7 +88,7 @@ const Temp = () => {
             elainelist.map((el) => (
               <div className="temp__elaine__gallery__item" key={el._id}>
                 <div className="temp__elaine__gallery__image">
-                  <img src={`${URL}api/${el.imagePreview}`} alt="" />
+                  <img src={`${ImageURL}api/${el.imagePreview}`} alt="" />
                 </div>
                 <Text className="temp__nora__gallery__name">{el.name}</Text>
                 <div className="temp__elaine__gallery__info">

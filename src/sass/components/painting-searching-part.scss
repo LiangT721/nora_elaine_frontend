@@ -1,4 +1,7 @@
 .painting {
+  &-searching-part{
+    transition: all .1s linear;
+  }
 
   &__searchingbar {
     max-width: 1600px;
@@ -71,7 +74,7 @@
     font-weight: 600;
     text-transform: uppercase;
     padding: .5rem 3rem;
-    border-radius: 5px;
+    border-radius: 2px;
     width: 100%;
     box-shadow: $shadow-card;
     transition: all 0.2s linear;
@@ -136,5 +139,20 @@
     @media only screen and (max-width: $bp-lg) {
       transform: rotateZ(-15deg);
     }
+  }
+
+  &-search__topStick{
+    background-color: rgba(0, 0, 0, 0.734);
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    backdrop-filter: blur(4px);
+
+  }
+  &-search__topStick__Keywords{
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+  }
+  &-search__topStick__category{
+    margin-bottom: 3rem;
   }
 }

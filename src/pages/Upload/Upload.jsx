@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import { URL, category } from "../../variable";
+import { category } from "../../variable";
+import { URL } from "../../url";
 import { useResizer } from "../../shared/hooks/useResizer";
 import { useForm } from "../../shared/hooks/useForm";
 import { useHttpClient } from "../../shared/hooks/http-hook";

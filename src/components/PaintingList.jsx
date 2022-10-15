@@ -2,7 +2,7 @@ import React, { useRef, useCallback, useState } from "react";
 import PopUpGB from "../shared/components/PopUpBG";
 import PaintingSlider from "./PaintSlider";
 
-import { URL } from "../variable";
+import { ImageURL } from "../variable";
 
 const PaintingList = (props) => {
   const { list, loading, hasMore, setSkipNum, isDefaultList,displayListUpdate,displayListdelete } = props;
@@ -51,7 +51,7 @@ const PaintingList = (props) => {
               <img
                 ref={lastRef}
                 className="painting-list__img"
-                src={`${URL}api/${el.imagePreview}`}
+                src={`${ImageURL}api/${el.imagePreview}`}
                 alt=""
                 key={el._id}
                 onClick={() => {
@@ -63,7 +63,7 @@ const PaintingList = (props) => {
             return (
               <img
                 className="painting-list__img"
-                src={`${URL}api/${el.imagePreview}`}
+                src={`${ImageURL}api/${el.imagePreview}`}
                 alt=""
                 key={el._id}
                 onClick={() => {

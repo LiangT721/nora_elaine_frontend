@@ -139,6 +139,13 @@
     @media only screen and (max-width: $bp-lg) {
       transform: rotateZ(-15deg);
     }
+
+    &__selected{
+      color: $color-elaine-primary-dark;
+    }
+    &__nora__selected{
+      color: $color-nora-primary-light-3;
+    }
   }
 
   &-search__topStick{

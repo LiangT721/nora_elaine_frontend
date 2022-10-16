@@ -92,6 +92,7 @@
     transform: rotateZ(10deg);
   }
   &-planet {
+    display: none;
     width: 6rem;
     height: 6rem;
     fill: $color-nora-primary-light-3;
@@ -113,6 +114,7 @@
     top: 55%;
     right: 20%;
     transform: rotateZ(-10deg);
+    display: none;
   }
 
   @media only screen and (max-width: $bp-lg) {

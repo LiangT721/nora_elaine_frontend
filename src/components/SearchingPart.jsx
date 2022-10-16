@@ -77,10 +77,12 @@ const SearchingPart = (props) => {
     <div
       ref={ref}
       className={`painting-searching-part  ${props.className} ${
-        offset > 200 && "painting-search__topStick"
+        offset > 100 && "painting-search__topStick"
       }`}
     >
-      <div className="painting__searchingbar ">
+      <div className={`painting__searchingbar ${
+        offset > 150 && "painting-search__topStick__searchingbar"
+      }`}>
         <input
           type="text"
           className="painting__searchinput"
@@ -120,7 +122,7 @@ const SearchingPart = (props) => {
       </div>
       <div
         className={`painting__keywords ${
-          offset > 200 && "painting-search__topStick__Keywords"
+          offset > 250 && "painting-search__topStick__Keywords"
         }`}
       >
         {keyWords.length > 0 &&

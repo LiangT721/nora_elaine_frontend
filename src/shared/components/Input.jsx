@@ -93,6 +93,7 @@ const Input = (props) => {
           !inputState.isValid && inputState.isTouched && "input__invalid"
         }`}
         id={props.id}
+        type={props.type||"text"}
         placeholder={props.placeholder}
         onChange={changeHandler}
         onBlur={touchHandler}

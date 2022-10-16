@@ -110,6 +110,7 @@ const UserInfo = () => {
             className="login__password"
             label="password"
             id="password"
+            type="password"
             placeholder="password"
             onInput={inputHandler}
             validators={[VALIDATOR_REQUIRE()]}

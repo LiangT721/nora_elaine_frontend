@@ -1,9 +1,12 @@
 .painting {
-  &-searching-part{
-    transition: all .1s linear;
+  &-searching-part {
+    transition: all 0.1s linear;
+    position: sticky;
+    top: 0;
   }
 
   &__searchingbar {
+    z-index: 200;
     max-width: 1600px;
     margin: 0 auto;
     width: 100%;
@@ -19,8 +22,8 @@
     }
   }
 
-  &__btn__elaine{
-    background-color: $color-elaine-primary-dark; 
+  &__btn__elaine {
+    background-color: $color-elaine-primary-dark;
     color: $color-elaine-primary-light-1;
     background-image: none;
   }
@@ -62,7 +65,6 @@
       row-gap: 1rem;
       padding: 0 2rem;
     }
- 
   }
 
   &__category {
@@ -73,36 +75,35 @@
     font-size: 1.4rem;
     font-weight: 600;
     text-transform: uppercase;
-    padding: .5rem 3rem;
+    padding: 0.5rem 3rem;
     border-radius: 2px;
     width: 100%;
     box-shadow: $shadow-card;
     transition: all 0.2s linear;
     cursor: pointer;
 
-    &__nora{
+    &__nora {
       background-color: $color-nora-primary-light-1;
       color: $color-nora-primary;
     }
     @media only screen and (max-width: $bp-lg) {
-      padding: .5rem 1rem;
-
+      padding: 0.5rem 1rem;
     }
 
     &:hover {
       color: $color-elaine-primary-dark;
       background-color: $color-elaine-primary-light-1;
     }
-    &__nora:hover{
+    &__nora:hover {
       background-color: $color-nora-primary-light-3;
       color: $color-milk-white;
     }
 
-    &__selected{
+    &__selected {
       color: $color-elaine-primary-dark;
       background-color: $color-elaine-primary-light-1;
     }
-    &__nora__selected{
+    &__nora__selected {
       background-color: $color-nora-primary-light-3;
       color: $color-milk-white;
     }
@@ -121,6 +122,7 @@
     color: $color-milk-white;
     text-shadow: $shadow-text-dark;
     margin-bottom: 6rem;
+    transition: all 0.3s linear;
     @media only screen and (max-width: $bp-sm) {
       grid-template-columns: repeat(4, max-content);
       row-gap: 2rem;
@@ -140,26 +142,37 @@
       transform: rotateZ(-15deg);
     }
 
-    &__selected{
+    &__selected {
       color: $color-elaine-primary-dark;
     }
-    &__nora__selected{
+    &__nora__selected {
       color: $color-nora-primary-light-3;
     }
   }
 
-  &-search__topStick{
+  &-search__topStick {
+    // position: sticky;
+    // top: 0;
     background-color: rgba(0, 0, 0, 0.734);
     padding-top: 2rem;
     padding-bottom: 1rem;
     backdrop-filter: blur(4px);
-
   }
-  &-search__topStick__Keywords{
+  &-search__topStick__searchingbar {
     padding: 0 2rem;
     margin-bottom: 2rem;
   }
-  &-search__topStick__category{
-    margin-bottom: 3rem;
+  &-search__topStick__Keywords {
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+    @media only screen and (max-width: $bp-sm) {
+      position: absolute;
+      top: -10rem;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  }
+  &-search__topStick__category {
+    margin-bottom: 2rem;
   }
 }

@@ -155,6 +155,8 @@ const Upload = () => {
             label="created date"
             id="created_date"
             placeholder="created date"
+            type="date"
+
             className="upload__created_date"
             onInput={inputHandler}
             validators={[VALIDATOR_REQUIRE()]}

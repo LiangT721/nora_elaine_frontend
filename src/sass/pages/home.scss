@@ -1,4 +1,15 @@
 .home{
   font-size: 2rem;
   min-height: 100vh;
+  position: relative;
+
+
+  &__toggle{
+    position: absolute;
+    z-index: 1000;
+    width: clamp(10rem,100vw, 1600px);
+    text-align: right;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

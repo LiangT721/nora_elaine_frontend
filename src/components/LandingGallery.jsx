@@ -9,7 +9,7 @@ import { userBackup } from "../variable";
 import { URL } from "../url";
 
 import LandingSlider from "./LandingSlider";
-import LanguageToggle from "../shared/components/LanguageToggle";
+
 import Text from "../shared/components/Text";
 import LandingBackground from "./landingBackground";
 
@@ -36,10 +36,8 @@ const LandingGallery = () => {
   useEffect(() => {
     fetchPaintingsList();
   }, [fetchPaintingsList]);
-  console.log(users)
   return (
     <div className="landing-gallery">
-      <LanguageToggle className="landing-gallery__toggle" />
       <LandingBackground />
       <div className="landing-gallery__contents">
         <div className="landing-gallery__elaine">

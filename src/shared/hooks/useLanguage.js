@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { useCookies } from "react-cookie";
 
 const languageContext = React.createContext();
 
@@ -16,16 +17,10 @@ const languageReducer = (state, action) => {
 };
 
 const LanguageProvider = (props) => {
+  const [cookies] = useCookies(["lang"]);
   const [lanState, dispatch] = useReducer(languageReducer, {
-    lan: true
+    lan: !cookies.lang || cookies.lang === "true" || false
   });
-
-  // const toggleHandler = () => {
-  //   dispatch({
-  //     type:"LAN_TOGGLE"
-  //   })
-  // }
-
   return (
     <languageContext.Provider value={{ lanState, dispatch }}>
       {props.children}

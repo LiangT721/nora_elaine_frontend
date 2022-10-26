@@ -23,7 +23,7 @@ const LandingGallery = () => {
 
   const fetchPaintingsList = useCallback(async () => {
     try {
-      const res = await sendRequest(`${URL}api/paintings`, "GET");
+      const res = await sendRequest(`${URL}api/paintings/landing`, "GET");
       const userRes = await sendRequest(`${URL}api/users`, "GET");
       userRes.users.length > 0 && setUsers(userRes.users);
       res.lists.nora && setNoraList(res.lists.nora);

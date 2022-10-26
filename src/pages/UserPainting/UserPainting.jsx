@@ -29,7 +29,7 @@ const UserPainting = () => {
   const fetchData = useCallback(async (skipNum) => {
     try {
       const res = await sendRequest(
-        `${URL}api/paintings/${uid}^${skipNum}`,
+        `${URL}api/paintings/user/${uid}^${skipNum}`,
         "GET"
       );
       setDisplayList((preDisplayList) => {
